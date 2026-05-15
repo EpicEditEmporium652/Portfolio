@@ -73,11 +73,11 @@ Scripts delivered via **GitHub loader**, one script to your game loads the scrip
 | Medium system | $10 |
 | Complex / multiple systems | Discuss in DMs |
 
-Payment: PSN or Amazon gift cards only.
+Payment: Amazon gift cards only.
 
 ---
 
-## 📬 Contact
+## 📬 Contact (@
 
 DM me on Discord to discuss your project.
 
