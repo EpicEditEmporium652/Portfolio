@@ -1,0 +1,319 @@
+local b
+local bb
+workspace.MainModule.selfdestruct.ModelAssets.PreExploderEmitters.center.Bright.AlwaysOnTop = false
+for _, v in ipairs(workspace:GetChildren()) do
+if v:IsA("Part") and v:FindFirstChild("ClickDetector") and (v.Position - Vector3.new(-141.79660034179688, 346.42626953125, 207.08493041992188)).Magnitude <= 0.01 then
+b = v
+for _, v in ipairs(b:GetChildren()) do
+v:Destroy()
+end
+elseif v:IsA("Part") and v:FindFirstChild("ClickDetector") and (v.Position - Vector3.new(-135.01214599609375, 346.42626953125, 207.09759521484375)).Magnitude <= 0.01 then
+bb = v
+for _, v in ipairs(bb:GetChildren()) do
+v:Destroy()
+end
+end
+end
+
+b.Name = "buttonu1"
+bb.Name = "buttonu2"
+b.Anchored = true
+bb.Anchored = true
+b.Shape = Enum.PartType.Cylinder
+bb.Shape = Enum.PartType.Cylinder
+b.Size = Vector3.new(0.15, 0.8, 0.8)
+bb.Size = Vector3.new(0.15, 0.8, 0.8)
+b.CFrame = b.CFrame * CFrame.Angles(0, 0, math.rad(90)) * CFrame.new(-0.46, 0, 0)
+bb.CFrame = bb.CFrame * CFrame.Angles(0, 0, math.rad(90)) * CFrame.new(-0.46, 0, 0)
+b.Position = Vector3.new(b.Position.X, b.Position.Y, bb.Position.Z)
+b.Material = Enum.Material.Metal
+bb.Material = Enum.Material.Metal
+b.Color = Color3.fromRGB(105, 102, 92)
+bb.Color = Color3.fromRGB(105, 102, 92)
+
+local j = Instance.new("Part", b) 
+j.Name = "Plate" 
+j.Position = b.Position + Vector3.new(0, 0, 0.2)
+j.Size = Vector3.new(1, 0.05, 1.5) 
+j.Anchored = true
+j.Material = Enum.Material.Metal
+local n = Instance.new("Part", b)
+n.Name = "Indicator"
+n.Position = b.Position + Vector3.new(0, 0, 0.6)
+n.Size = Vector3.new(0.08, 0.2, 0.2)
+n.Anchored = true
+n.Material = Enum.Material.SmoothPlastic
+n.CFrame = n.CFrame * CFrame.Angles(0, 0, math.rad(90))
+n.Shape = Enum.PartType.Cylinder
+n.Color = Color3.fromRGB(70, 68, 63)
+local i = Instance.new("Part", n)
+i.Name = "Glass"
+i.Position = n.Position
+i.Size = Vector3.new(0.2, 0.2, 0.2)
+i.Color = Color3.fromRGB(70, 68, 63)
+i.Shape = Enum.PartType.Ball
+i.Material = Enum.Material.Glass
+i.Anchored = true
+
+local c = b:Clone()
+local z = Instance.new("ClickDetector")
+for _, v in ipairs(c:GetChildren()) do
+v:Destroy()
+end
+c.Material = Enum.Material.Rubber
+c.Size = Vector3.new(0.4, 0.7, 0.7)
+c.Color = Color3.fromRGB(255, 0, 0)
+c.Name = "btn"
+
+local function sg(txt, duration)
+local function gs(plr)
+local aa = Instance.new("ScreenGui")
+aa.ResetOnSpawn = false
+aa.Parent = plr.PlayerGui
+local bd = Instance.new("Frame", aa)
+bd.BackgroundTransparency = 0.7
+bd.Position = UDim2.new(0.64, 0, 0.02, 0)
+bd.Size = UDim2.new(0.35, 0, 0.22, 0)
+Instance.new("UICorner", bd)
+local cc = Instance.new("UIStroke", bd)
+cc.Color = Color3.fromRGB(209, 209, 209)
+cc.Transparency = 0.5
+cc.Thickness = 2
+local dd = Instance.new("TextLabel", bd)
+dd.BackgroundTransparency = 1
+dd.Position = UDim2.new(0.02, 0, 0.02, 0)
+dd.Size = UDim2.new(0.98, 0, 0.3, 0)
+dd.TextColor3 = Color3.fromRGB(224, 224, 224)
+dd.TextSize = 24
+dd.TextXAlignment = Enum.TextXAlignment.Left
+dd.Font = Enum.Font.SourceSansBold
+dd.Text = "Notification"
+local ee = Instance.new("TextLabel", bd)
+ee.BackgroundTransparency = 1
+ee.Position = UDim2.new(0.02, 0, 0.3, 0)
+ee.Size = UDim2.new(0.97, 0, 0.7, 0)
+ee.TextColor3 = Color3.fromRGB(185, 185, 185)
+ee.TextSize = 9
+ee.TextDirection = Enum.TextDirection.LeftToRight
+ee.TextXAlignment = Enum.TextXAlignment.Left
+ee.TextYAlignment = Enum.TextYAlignment.Top
+ee.TextWrapped = true
+ee.Text = txt
+local ff = Instance.new("ImageLabel", bd)
+ff.BackgroundTransparency = 1
+ff.Position = UDim2.new(0.365, 0, 0.1, 0)
+ff.Size = UDim2.new(0.2, 0, 0.8, 0)
+ff.Image = "rbxassetid://70856241901857"
+ff.ImageTransparency = 0.8
+ff.ScaleType = Enum.ScaleType.Fit
+local gg = {}
+local hh = {bd, cc, dd, ee, ff}
+for _, v in ipairs(hh) do
+if v:IsA("Frame") then
+gg[v] = v.BackgroundTransparency
+elseif v:IsA("TextLabel") then
+gg[v] = v.TextTransparency
+elseif v:IsA("UIStroke") then
+gg[v] = v.Transparency
+elseif v:IsA("ImageLabel") then
+gg[v] = v.ImageTransparency
+end
+end
+for _, v in ipairs(hh) do
+if v:IsA("Frame") then
+v.BackgroundTransparency = 1
+elseif v:IsA("TextLabel") then
+v.TextTransparency = 1
+elseif v:IsA("UIStroke") then
+v.Transparency = 1
+elseif v:IsA("ImageLabel") then
+v.ImageTransparency = 1
+end
+end
+for _, v in ipairs(hh) do
+local kk = {}
+if v:IsA("Frame") then
+kk.BackgroundTransparency = gg[v]
+elseif v:IsA("TextLabel") then
+kk.TextTransparency = gg[v]
+elseif v:IsA("UIStroke") then
+kk.Transparency = gg[v]
+elseif v:IsA("ImageLabel") then
+kk.ImageTransparency = gg[v]
+end
+game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), kk):Play()
+task.delay(duration, function()
+local mm = {}
+if v:IsA("Frame") then
+mm.BackgroundTransparency = 1
+elseif v:IsA("TextLabel") then
+mm.TextTransparency = 1
+elseif v:IsA("UIStroke") then
+mm.Transparency = 1
+elseif v:IsA("ImageLabel") then
+mm.ImageTransparency = 1
+end
+game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), mm):Play()
+end)
+end
+end
+for _, v in ipairs(game:GetService("Players"):GetPlayers()) do
+gs(v)
+end
+game:GetService("Players").PlayerAdded:Connect(gs)
+end
+
+-- make it script
+local f = true
+local h = false
+z.MouseClick:Connect(function()
+if not f then return end
+f = false
+i.Material = Enum.Material.Neon
+i.Color = Color3.fromRGB(0, 255, 0)
+if game:GetService("SoundService").Sound.SoundId == "rbxassetid://108221361208113" then
+local a = game:GetService("SoundService").Sound
+a:Play()
+task.delay(7, function()
+local txt = [[Attention all facility personnel! Protocol T-SD-02 activation in
+progress. Please prepare for emergency evacuation from the
+facility to the safest distance! This is not a drill, repeat, this is
+not a drill]]
+sg(txt, 14)
+end)
+a.Ended:Connect(function()
+h = true
+end)
+end
+game:GetService("TweenService"):Create(c, TweenInfo.new(0.2), {Position = Vector3.new(c.Position.X, c.Position.Y - 0.1, c.Position.Z)}):Play()
+task.wait(0.5)
+game:GetService("TweenService"):Create(c, TweenInfo.new(0.2), {Position = Vector3.new(c.Position.X, c.Position.Y + 0.1, c.Position.Z)}):Play()
+end)
+
+c.Parent = b
+z.Parent = c
+
+local d = bb:Clone()
+local e = Instance.new("ClickDetector")
+for _, v in ipairs(d:GetChildren()) do
+v:Destroy()
+end
+d.Material = Enum.Material.SmoothPlastic
+d.Size = Vector3.new(0.4, 0.7, 0.7)
+d.Color = Color3.fromRGB(255, 0, 0)
+d.Name = "btn"
+
+local r
+for _, v in ipairs(workspace:GetChildren()) do
+if v:IsA("Part") and (v.Position - Vector3.new(-138.2510528564453, 344.3717956542969, 206.4504852294922)).Magnitude <= 0.01 then
+r = v
+end
+end
+
+local function q(p1)
+p1.Position = p1.Position + Vector3.new(-137.5 - r.Position.X, 0, 0)
+end
+for _, v in ipairs(workspace:GetDescendants()) do
+if v:IsA("TextLabel") and v.Text == "you must enable this secondly" then
+q(v.Parent.Parent)
+for _, d in ipairs(v.Parent.Parent.Parent:GetChildren()) do
+if d:IsA("Part") and not d:FindFirstChildWhichIsA("SurfaceGui") then
+q(d)
+end
+end
+elseif v:IsA("Part") and (v.Position - Vector3.new(-138.2510528564453, 346.0064392089844, 202.42666625976562)).Magnitude <= 0.01 then
+q(v)
+elseif v:IsA("Part") and (v.Position - Vector3.new(-138.2982940673828, 347.4503173828125, 203.62411499023438)).Magnitude <= 0.01 then
+q(v)
+end
+end
+q(b)
+q(bb)
+q(j)
+q(n)
+q(i)
+q(c)
+q(d)
+
+local y = j:Clone()
+y.Position = bb.Position + Vector3.new(0, 0, 0.2)
+y.Parent = bb
+
+local u = n:Clone()
+u.Position = bb.Position + Vector3.new(0, 0, 0.6)
+for _, v in ipairs(u:GetChildren()) do
+if v:IsA("BasePart") and v.Name == "Glow" then
+v.Position = bb.Position + Vector3.new(0, 0, 0.6)
+elseif v:IsA("BasePart") and v.Name == "Glass" then
+v.Position = bb.Position + Vector3.new(0, 0, 0.6)
+end
+end
+u.Parent = bb
+
+r.Position = Vector3.new(-137.5, r.Position.Y, r.Position.Z)
+
+-- make it script
+e.MouseClick:Connect(function()
+if not h then return end
+h = false
+u.Glass.Material = Enum.Material.Neon
+u.Glass.Color = Color3.fromRGB(0, 255, 0)
+local s = Instance.new("Sound", workspace)
+s.SoundId = "rbxassetid://77926742505902"
+s:Play()
+s.Ended:Connect(function()
+s:Destroy()
+end)
+game:GetService("TweenService"):Create(d, TweenInfo.new(0.2), {Position = Vector3.new(d.Position.X, d.Position.Y - 0.1, d.Position.Z)}):Play()
+task.wait(0.5)
+game:GetService("TweenService"):Create(d, TweenInfo.new(0.2), {Position = Vector3.new(d.Position.X, d.Position.Y + 0.1, d.Position.Z)}):Play()
+end)
+
+d.Parent = bb
+e.Parent = d
+
+for _, v in ipairs(workspace:GetChildren()) do
+if v:IsA("Model") and v.Name == "Ceiling_Light" then
+if v:FindFirstChildWhichIsA("Script") then
+v:FindFirstChildWhichIsA("Script"):Destroy()
+end
+if v:FindFirstChild("Specks") then
+v.Specks:Destroy()
+end
+if v:FindFirstChild("BeamBase") and v.BeamBase:FindFirstChildWhichIsA("Beam") then
+v.BeamBase:FindFirstChildWhichIsA("Beam"):Destroy()
+end
+end
+end
+
+for _, v in ipairs(workspace:GetChildren()) do
+if v:IsA("Model") and v.Name == "Blast Door (Ungroup)" then
+local w = v:WaitForChild("Blast Door"):WaitForChild("Door"):WaitForChild("Button1")
+local e = v:WaitForChild("Blast Door"):WaitForChild("Door"):WaitForChild("Button2")
+w:WaitForChild("Button1").Color = Color3.fromRGB(151, 0, 0)
+w:WaitForChild("Light1").Color = Color3.fromRGB(255, 0, 0)
+w:WaitForChild("Button1"):FindFirstChildWhichIsA("ProximityPrompt").Enabled = false
+e:WaitForChild("Button2").Color = Color3.fromRGB(151, 0, 0)
+e:WaitForChild("Light2").Color = Color3.fromRGB(255, 0, 0)
+e:WaitForChild("Button2"):FindFirstChildWhichIsA("ProximityPrompt").Enabled = false
+v["Blast Door"].Modules.Value.Value = true
+v["Blast Door"].LockdownPanel.LockDoorButton.LockDoor.Value = true
+v["Blast Door"].LockdownPanel.LockDoorButton.ClickDetector.MaxActivationDistance = 0
+v["Blast Door"].LockdownPanel.Part.ClickDetector.MaxActivationDistance = 20
+local Hlock1 = v["Blast Door"].Door.HeavyLocks.Lock1
+local Hlock2 = v["Blast Door"].Door.HeavyLocks.Lock2
+local Vlock3 = v["Blast Door"].Door.HeavyLocks.Lock3
+Hlock1.PrimaryPart.CFrame = Hlock1.PrimaryPart.CFrame * CFrame.new(0, 13.5, 0)
+Hlock2.PrimaryPart.CFrame = Hlock2.PrimaryPart.CFrame * CFrame.new(0, 13.7, 0)
+Vlock3.PrimaryPart.CFrame = Vlock3.PrimaryPart.CFrame * CFrame.new(15, 0, 0)
+end
+end
+
+for _, v in ipairs(workspace:GetChildren()) do
+if v:IsA("SpawnLocation") then
+v.Transparency = 1
+if v:FindFirstChildWhichIsA("Decal") then
+v.Decal.Transparency = 1
+end
+end
+end

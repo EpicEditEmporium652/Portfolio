@@ -1,0 +1,140 @@
+local r = Random.new()
+local rs = game:GetService("RunService")
+local tws = game:GetService("TweenService")
+local cp = game:GetService("ContentProvider")
+local sse = game:GetService("SoundService")
+local lgt = game:GetService("Lighting")
+local ball = workspace:WaitForChild("ffd_light"):WaitForChild("ball")
+
+local sx = Instance.new("Sound", workspace)
+sx.SoundId = "rbxassetid://121464452775939"
+sx.Volume = 10
+local ss = Instance.new("Sound", game.SoundService)
+ss.SoundId = "rbxassetid://72822762108652"
+ss.PlaybackSpeed = 1
+cp:PreloadAsync({sx, ss})
+game.ReplicatedStorage.Shake.OnClientEvent:Connect(function()
+    local ch = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    local plr = ch:WaitForChild("Humanoid")
+    ss:Play()
+    local a
+    local b2
+    local b = Instance.new("NumberValue")
+    a = rs.Heartbeat:Connect(function()
+        b.Value = 0.5 * ss.PlaybackLoudness / 1000
+        plr.CameraOffset = Vector3.new(r:NextNumber(-b.Value, b.Value), r:NextNumber(-b.Value, b.Value), r:NextNumber(-b.Value, b.Value))
+        ball:ApplyImpulse(Vector3.new(r:NextNumber(-0.5 * ss.PlaybackLoudness / 120 * ball:GetMass(), 0.5 * ss.PlaybackLoudness / 120 * ball:GetMass()), 0, r:NextNumber(-0.5 * ss.PlaybackLoudness / 220 * ball:GetMass(), 0.5 * ss.PlaybackLoudness / 220 * ball:GetMass())))
+    end)
+    ss.Ended:Connect(function()
+        b.Value = 0
+        b2 = 0
+        b:Destroy()
+        a:Disconnect()
+        for v = 1, 20 do
+        ball.AssemblyLinearVelocity = Vector3.zero
+        ball.AssemblyAngularVelocity = Vector3.zero
+        task.wait(0.5)
+        end
+    end)
+    task.wait(26.5 / ss.PlaybackSpeed)
+    
+    local fr = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+    fr.DisplayOrder = 99999
+    fr.ResetOnSpawn = false
+    fr.Enabled = false
+    fr.IgnoreGuiInset = true
+    local frr = Instance.new("Frame", fr)
+    frr.Position = UDim2.new(0, 0, 0, 0)
+    frr.Size = UDim2.new(1, 0, 1, 0)
+    frr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    local gsd = tws:Create(lgt, TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ExposureCompensation = 10})
+    gsd:Play()
+    local t = Instance.new("TextLabel", frr)
+    t.BackgroundTransparency = 1
+    t.Position = UDim2.new(0, 0, 0.17, 0)
+    t.Size = UDim2.new(1, 0, 0.7, 0)
+    t.Font = Enum.Font.Code
+    t.TextXAlignment = Enum.TextXAlignment.Left
+    t.TextYAlignment = Enum.TextYAlignment.Top
+    t.TextColor3 = Color3.new(0.5, 0.5, 0.5)
+    t.TextSize = 36
+    t.TextWrapped = true
+    t.Text = ""
+    local te = "The classified facility was destroyed by protocol T-SD-02\nwhich led to full facility destruction on bottomside and\nupperside. High Science announced that someone in the\nfacility wanted to destroy the facility by this protocol.\nThe protocol activation control was locked and nobody can\nhack facility operation system. But someone enter somehow in\nthe operation system and inserted a hack disk in the terminal\nand get access. But for now, we don't have enough information\nwho can destroy the facility."
+    gsd.Completed:Connect(function()
+        fr.Enabled = true
+        task.delay(4, function()
+        lgt.ExposureCompensation = 0
+        end)
+        ss.Ended:Wait()
+        local hst = tws:Create(frr, TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)})
+        hst:Play()
+        hst.Completed:Wait()
+        task.delay(2.3, function()
+            sx:Play()
+            sx.Ended:Wait()
+        end)
+        local kst = 0
+        task.wait(3)
+        local kms = Instance.new("Frame", frr)
+        kms.Position = UDim2.new(0, 0, 0.85, 0)
+        kms.Size = UDim2.new(1, 0, 0.01, 0)
+        kms.BackgroundColor3 = Color3.fromRGB(210, 209, 213)
+        kms.BorderSizePixel = 0
+        kms.BackgroundTransparency = 1
+        local grid = Instance.new("UIGradient", kms)
+        grid.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.new(0.14, 0.14, 0.14)),
+        ColorSequenceKeypoint.new(0.5, Color3.new(0.5, 0.5, 0.5)),
+        ColorSequenceKeypoint.new(1, Color3.new(0.14, 0.14, 0.14))
+        }
+        local hsg = kms:Clone()
+        hsg.Position = UDim2.new(0, 0, 0.15, 0)
+        hsg.Parent = frr
+        local txt = Instance.new("TextLabel", frr)
+        txt.BackgroundTransparency = 1
+        txt.Position = UDim2.new(0, 0, 0.04, 0)
+        txt.Size = UDim2.new(0.3, 0, 0.1, 0)
+        txt.TextColor3 = Color3.new(0.6, 0.6, 0.6)
+        txt.TextScaled = true
+        txt.Text = "Broadcasting ongoing"
+        txt.Font = Enum.Font.Legacy
+        txt.TextTransparency = 1
+        tws:Create(kms, TweenInfo.new(10), {BackgroundTransparency = 0}):Play()
+        tws:Create(hsg, TweenInfo.new(10), {BackgroundTransparency = 0}):Play()
+        tws:Create(txt, TweenInfo.new(10), {TextTransparency = 0}):Play()
+        for v = 1, #te do
+            if v == #te then
+                t.Text = string.sub(te, 1, v)
+                task.wait(3)
+                tws:Create(t, TweenInfo.new(2), {TextTransparency = 1}):Play()
+                tws:Create(txt, TweenInfo.new(2), {TextTransparency = 1}):Play()
+                tws:Create(kms, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
+                tws:Create(hsg, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
+                task.wait(2)
+                tws:Create(frr, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
+                task.wait(3)
+                fr:Destroy()
+            elseif string.sub(te, v, v) == "," then
+                t.Text = string.sub(te, 1, v)
+                task.wait(0.2)
+            elseif v ~= #te and string.sub(te, v, v) == "." then
+                t.Text = string.sub(te, 1, v)
+                if kst ~= 2 then
+                    kst += 1
+                end
+                task.wait(0.34)
+            elseif string.sub(te, v, v) == "'" then
+                t.Text = string.sub(te, 1, v)
+                task.wait(0.1)
+            else
+                t.Text = string.sub(te, 1, v)
+            end
+            if kst == 2 then
+                task.wait(0.05016)
+            else
+                task.wait(0.05054)
+            end
+        end
+    end)
+end)
