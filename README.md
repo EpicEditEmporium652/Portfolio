@@ -34,7 +34,6 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 | Custom proximity prompts | Full UI override with hold bar, highlight, touch + keyboard support |
 | GUI systems | Notification modules, status displays, HUDs |
 | Admin systems | Commands, persistent bans, DataStore ranks, offline ranking |
-| Vehicle systems | Chassis, motors, AWD, automatic transmission, engine audio |
 | DataStore | Save/load player data, persistent bans and ranks |
 | Custom requests | Not sure if I can build it? Ask me, I'll let you know |
 
