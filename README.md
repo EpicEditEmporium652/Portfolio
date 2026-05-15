@@ -82,4 +82,4 @@ DM me on Discord to discuss your project.
 
 ---
 
-*Scripts shown for Sequential purposes only. Do not copy, reuse, or redistribute without permission.*
+*Scripts shown for Showcase purposes only. Do not copy, reuse, or redistribute without permission.*
