@@ -10,7 +10,7 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 
 **[▶ Watch the full video](https://drive.google.com/file/d/1Ncu0w3OOulQ4RhfTORRZ7-ipWT5G_D8w/view?usp=drivesdk)**
 
-**[🎮 Try it live in-game](#)** ← *(replace with your game link)*
+**[🎮 Try it live in-game](https://www.roblox.com/games/121525030356323/test-site-for-ABCG-2)**
 
 ### What's in it:
 - 🔴 Sequential button system with indicator lights and screen display
