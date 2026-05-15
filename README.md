@@ -59,14 +59,6 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 
 ---
 
-## 📸 Screenshots
-
-![Control Room](Screenshots/Screenshot_2026-05-15-10-19-04-638_com.roblox.client.jpg)
-![Keypad Panel](Screenshots/Screenshot_2026-05-15-10-19-16-250_com.roblox.client.jpg)
-![Overview](Screenshots/Screenshot_2026-05-15-10-20-00-453_com.roblox.client.jpg)
-
----
-
 ## 📦 Delivery
 
 Scripts delivered via **GitHub loader**, one script to your game loads the script automatically. Any updates I push apply to your game instantly without republishing.
