@@ -55,7 +55,6 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 | [`proximity.txt`](/Scripts/Showcase/proximity.txt) | Custom ProximityPromptService override — hold bar, highlight, touch and keyboard support, asset preloading |
 | [`admin-games.txt`](/Scripts/Showcase/admin-games.txt) | Full admin system — fly, kick, ban, setrank, permrank, offline ranking, server restart, DataStore persistence |
 | [`main.txt`](/Scripts/Showcase/main.txt) | Full facility control system — state machine, dynamic world construction, emergency lighting, client replication, keypad, keycard scanner |
-
 | [`p1.txt`](/Scripts/Showcase/p1.txt) | Lever 1 client — fires once, handles indicator light and tween locally |
 | [`p2.txt`](/Scripts/Showcase/p2.txt) | Lever 2 client — server sends timing parameter, client runs full progress bar animation locally |
 | [`p3.txt`](/Scripts/Showcase/p3.txt) | Nuclear sequence client — server fires once, client handles countdown, lights, sound, notification module |
