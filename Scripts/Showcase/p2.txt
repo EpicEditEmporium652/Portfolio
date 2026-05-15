@@ -1,0 +1,25 @@
+local sc = workspace:WaitForChild("Screen")
+local fr = sc:WaitForChild("SurfaceGui"):WaitForChild("TextLabel")
+local fdr
+for _, v in ipairs(sc:WaitForChild("SurfaceGui"):GetChildren()) do
+if v:IsA("TextLabel") and v ~= fr and v:FindFirstChild("UIStroke") then
+fdr = v
+break
+end
+end
+local ee = workspace:WaitForChild("Lever2"):WaitForChild("Indicator"):WaitForChild("Glass")
+game.ReplicatedStorage.p2.OnClientEvent:Connect(function(v)
+ee.Material = Enum.Material.Neon
+ee.Color = Color3.fromRGB(0, 255, 0)
+fr.Text = "<< Preparing systems.. >>"
+fdr.Text = "<< Connecting and preparing systems (0% finished) >>"
+task.wait(v)
+for t = 1,100 do
+task.wait(v)
+fdr.Text = "<< Connecting and preparing systems (" .. t .. "% finished) >>"
+end
+task.wait(1)
+fr.Text = "<< System Prepared >>"
+fdr.Text = "<< Awaiting start signal >>"
+fr.TextSize = 66
+end)
