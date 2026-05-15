@@ -54,7 +54,7 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 | [`shake.txt`](/Scripts/Showcase/shake.txt) | Nuclear sequence — PlaybackLoudness camera shake, physics lamp, exposure flash, typewriter broadcast |
 | [`proximity.txt`](/Scripts/Showcase/proximity.txt) | Custom ProximityPromptService override — hold bar, highlight, touch and keyboard support, asset preloading |
 | [`admin-games.txt`](/Scripts/Showcase/admin-games.txt) | Full admin system — fly, kick, ban, setrank, permrank, offline ranking, server restart, DataStore persistence |
-| [`buttons.txt`](/Scripts/Showcase/buttons.txt) | Sequential button system with indicator lights, screen display and blast door control |
+| [`main.txt`](/Scripts/Showcase/main.txt) | Full facility control system — state machine, dynamic world construction, emergency lighting, client replication, keypad, keycard scanner |
 
 ---
 
@@ -82,4 +82,4 @@ DM me on Discord to discuss your project.
 
 ---
 
-*Scripts shown for portfolio purposes only. Do not copy, reuse, or redistribute without permission.*
+*Scripts shown for Sequential purposes only. Do not copy, reuse, or redistribute without permission.*
