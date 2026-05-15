@@ -76,7 +76,7 @@ Payment: Amazon gift cards only.
 
 ---
 
-## 📬 Contact (@
+## 📬 Contact
 
 DM me on Discord to discuss your project.
 
