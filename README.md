@@ -1,6 +1,6 @@
 # Roblox Luau Scripter — Portfolio
 
-> Self-taught mobile scripter. I build systems that don't just work — they *feel* right.
+> Self-taught mobile scripter. I build systems that don't just work, but *feel* right.
 
 ---
 
