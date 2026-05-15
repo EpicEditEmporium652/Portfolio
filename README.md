@@ -36,7 +36,7 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 | Admin systems | Commands, persistent bans, DataStore ranks, offline ranking |
 | Vehicle systems | Chassis, motors, AWD, automatic transmission, engine audio |
 | DataStore | Save/load player data, persistent bans and ranks |
-| Custom requests | Not sure if I can build it? Ask me — I'll let you know |
+| Custom requests | Not sure if I can build it? Ask me, I'll let you know |
 
 ---
 
@@ -69,7 +69,7 @@ A full cinematic nuclear destruction sequence built entirely on mobile.
 
 ## 📦 Delivery
 
-Scripts delivered via **GitHub loader** — one line added to your game loads the script automatically. Any updates I push apply to your live game instantly without republishing.
+Scripts delivered via **GitHub loader**, one script to your game loads the script automatically. Any updates I push apply to your game instantly without republishing.
 
 ---
 
