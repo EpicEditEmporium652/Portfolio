@@ -1,18 +1,23 @@
 local module = {}
 function module.sg(txt, duration)
     local plr = game.Players.LocalPlayer
+
     local screenGui = Instance.new("ScreenGui")
     screenGui.ResetOnSpawn = false
     screenGui.Parent = plr.PlayerGui
+
     local container = Instance.new("Frame", screenGui)
     container.BackgroundTransparency = 0.7
     container.Position = UDim2.new(0.64, 0, 0.02, 0)
     container.Size = UDim2.new(0.35, 0, 0.22, 0)
+
     Instance.new("UICorner", container)
+
     local stroke = Instance.new("UIStroke", container)
     stroke.Color = Color3.fromRGB(209, 209, 209)
     stroke.Transparency = 0.5
     stroke.Thickness = 2
+
     local titleLabel = Instance.new("TextLabel", container)
     titleLabel.BackgroundTransparency = 1
     titleLabel.Position = UDim2.new(0.02, 0, 0.02, 0)
@@ -22,6 +27,7 @@ function module.sg(txt, duration)
     titleLabel.TextXAlignment = Enum.TextXAlignment.Left
     titleLabel.Font = Enum.Font.SourceSansBold
     titleLabel.Text = "Notification"
+
     local messageLabel = Instance.new("TextLabel", container)
     messageLabel.BackgroundTransparency = 1
     messageLabel.Position = UDim2.new(0.02, 0, 0.3, 0)
@@ -33,6 +39,7 @@ function module.sg(txt, duration)
     messageLabel.TextYAlignment = Enum.TextYAlignment.Top
     messageLabel.TextWrapped = true
     messageLabel.Text = txt
+
     local icon = Instance.new("ImageLabel", container)
     icon.BackgroundTransparency = 1
     icon.Position = UDim2.new(0.365, 0, 0.1, 0)
@@ -40,8 +47,10 @@ function module.sg(txt, duration)
     icon.Image = "rbxassetid://70856241901857"
     icon.ImageTransparency = 0.8
     icon.ScaleType = Enum.ScaleType.Fit
+
     local originalValues = {}
     local elements = {container, stroke, titleLabel, messageLabel, icon}
+
     for _, v in elements do
         if v:IsA("Frame") then
             originalValues[v] = v.BackgroundTransparency
@@ -53,6 +62,7 @@ function module.sg(txt, duration)
             originalValues[v] = v.ImageTransparency
         end
     end
+
     for _, v in elements do
         if v:IsA("Frame") then
             v.BackgroundTransparency = 1
@@ -64,6 +74,7 @@ function module.sg(txt, duration)
             v.ImageTransparency = 1
         end
     end
+
     for _, v in elements do
         local tweenProps = {}
         if v:IsA("Frame") then
@@ -75,7 +86,9 @@ function module.sg(txt, duration)
         elseif v:IsA("ImageLabel") then
             tweenProps.ImageTransparency = originalValues[v]
         end
-        game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), tweenProps):Play()
+
+        game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), tweenProps):Playend
+
         task.delay(duration, function()
             local fadeProps = {}
             if v:IsA("Frame") then
@@ -87,6 +100,7 @@ function module.sg(txt, duration)
             elseif v:IsA("ImageLabel") then
                 fadeProps.ImageTransparency = 1
             end
+
             game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), fadeProps):Play()
         end)
     end
