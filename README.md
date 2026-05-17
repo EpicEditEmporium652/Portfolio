@@ -8,7 +8,7 @@
 
 A full cinematic nuclear destruction sequence.
 
-**[▶ Watch the full video](https://drive.google.com/file/d/1Ncu0w3OOulQ4RhfTORRZ7-ipWT5G_D8w/view?usp=drivesdk)**
+**[▶ Watch the full video](https://youtu.be/gxNwwPd7i8M?si=yhvH5wQOrhx6ykE5)**
 
 **[🎮 Try it live in-game](https://www.roblox.com/games/121525030356323/test-site-for-ABCG-2)**
 
