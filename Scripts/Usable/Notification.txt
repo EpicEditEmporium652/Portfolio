@@ -1,97 +1,97 @@
 local module = {}
 function module.sg(txt, duration)
-local plr = game.Players.LocalPlayer
-local aa = Instance.new("ScreenGui")
-aa.ResetOnSpawn = false
-aa.Parent = plr.PlayerGui
-local bd = Instance.new("Frame", aa)
-bd.BackgroundTransparency = 0.7
-bd.Position = UDim2.new(0.64, 0, 0.02, 0)
-bd.Size = UDim2.new(0.35, 0, 0.22, 0)
-Instance.new("UICorner", bd)
-local cc = Instance.new("UIStroke", bd)
-cc.Color = Color3.fromRGB(209, 209, 209)
-cc.Transparency = 0.5
-cc.Thickness = 2
-local dd = Instance.new("TextLabel", bd)
-dd.BackgroundTransparency = 1
-dd.Position = UDim2.new(0.02, 0, 0.02, 0)
-dd.Size = UDim2.new(0.98, 0, 0.3, 0)
-dd.TextColor3 = Color3.fromRGB(224, 224, 224)
-dd.TextSize = 24
-dd.TextXAlignment = Enum.TextXAlignment.Left
-dd.Font = Enum.Font.SourceSansBold
-dd.Text = "Notification"
-local ee = Instance.new("TextLabel", bd)
-ee.BackgroundTransparency = 1
-ee.Position = UDim2.new(0.02, 0, 0.3, 0)
-ee.Size = UDim2.new(0.97, 0, 0.7, 0)
-ee.TextColor3 = Color3.fromRGB(185, 185, 185)
-ee.TextSize = 9
-ee.TextDirection = Enum.TextDirection.LeftToRight
-ee.TextXAlignment = Enum.TextXAlignment.Left
-ee.TextYAlignment = Enum.TextYAlignment.Top
-ee.TextWrapped = true
-ee.Text = txt
-local ff = Instance.new("ImageLabel", bd)
-ff.BackgroundTransparency = 1
-ff.Position = UDim2.new(0.365, 0, 0.1, 0)
-ff.Size = UDim2.new(0.2, 0, 0.8, 0)
-ff.Image = "rbxassetid://70856241901857"
-ff.ImageTransparency = 0.8
-ff.ScaleType = Enum.ScaleType.Fit
-local gg = {}
-local hh = {bd, cc, dd, ee, ff}
-for _, v in ipairs(hh) do
-if v:IsA("Frame") then
-gg[v] = v.BackgroundTransparency
-elseif v:IsA("TextLabel") then
-gg[v] = v.TextTransparency
-elseif v:IsA("UIStroke") then
-gg[v] = v.Transparency
-elseif v:IsA("ImageLabel") then
-gg[v] = v.ImageTransparency
-end
-end
-for _, v in ipairs(hh) do
-if v:IsA("Frame") then
-v.BackgroundTransparency = 1
-elseif v:IsA("TextLabel") then
-v.TextTransparency = 1
-elseif v:IsA("UIStroke") then
-v.Transparency = 1
-elseif v:IsA("ImageLabel") then
-v.ImageTransparency = 1
-end
-end
-for _, v in ipairs(hh) do
-local kk = {}
-if v:IsA("Frame") then
-kk.BackgroundTransparency = gg[v]
-elseif v:IsA("TextLabel") then
-kk.TextTransparency = gg[v]
-elseif v:IsA("UIStroke") then
-kk.Transparency = gg[v]
-elseif v:IsA("ImageLabel") then
-kk.ImageTransparency = gg[v]
-end
-game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), kk):Play()
-task.delay(duration, function()
-local mm = {}
-if v:IsA("Frame") then
-mm.BackgroundTransparency = 1
-elseif v:IsA("TextLabel") then
-mm.TextTransparency = 1
-elseif v:IsA("UIStroke") then
-mm.Transparency = 1
-elseif v:IsA("ImageLabel") then
-mm.ImageTransparency = 1
-end
-game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), mm):Play()
-end)
-end
-task.delay(duration + 0.6, function()
-aa:Destroy()
-end)
+    local plr = game.Players.LocalPlayer
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.ResetOnSpawn = false
+    screenGui.Parent = plr.PlayerGui
+    local container = Instance.new("Frame", screenGui)
+    container.BackgroundTransparency = 0.7
+    container.Position = UDim2.new(0.64, 0, 0.02, 0)
+    container.Size = UDim2.new(0.35, 0, 0.22, 0)
+    Instance.new("UICorner", container)
+    local stroke = Instance.new("UIStroke", container)
+    stroke.Color = Color3.fromRGB(209, 209, 209)
+    stroke.Transparency = 0.5
+    stroke.Thickness = 2
+    local titleLabel = Instance.new("TextLabel", container)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.Position = UDim2.new(0.02, 0, 0.02, 0)
+    titleLabel.Size = UDim2.new(0.98, 0, 0.3, 0)
+    titleLabel.TextColor3 = Color3.fromRGB(224, 224, 224)
+    titleLabel.TextSize = 24
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    titleLabel.Font = Enum.Font.SourceSansBold
+    titleLabel.Text = "Notification"
+    local messageLabel = Instance.new("TextLabel", container)
+    messageLabel.BackgroundTransparency = 1
+    messageLabel.Position = UDim2.new(0.02, 0, 0.3, 0)
+    messageLabel.Size = UDim2.new(0.97, 0, 0.7, 0)
+    messageLabel.TextColor3 = Color3.fromRGB(185, 185, 185)
+    messageLabel.TextSize = 9
+    messageLabel.TextDirection = Enum.TextDirection.LeftToRight
+    messageLabel.TextXAlignment = Enum.TextXAlignment.Left
+    messageLabel.TextYAlignment = Enum.TextYAlignment.Top
+    messageLabel.TextWrapped = true
+    messageLabel.Text = txt
+    local icon = Instance.new("ImageLabel", container)
+    icon.BackgroundTransparency = 1
+    icon.Position = UDim2.new(0.365, 0, 0.1, 0)
+    icon.Size = UDim2.new(0.2, 0, 0.8, 0)
+    icon.Image = "rbxassetid://70856241901857"
+    icon.ImageTransparency = 0.8
+    icon.ScaleType = Enum.ScaleType.Fit
+    local originalValues = {}
+    local elements = {container, stroke, titleLabel, messageLabel, icon}
+    for _, v in elements do
+        if v:IsA("Frame") then
+            originalValues[v] = v.BackgroundTransparency
+        elseif v:IsA("TextLabel") then
+            originalValues[v] = v.TextTransparency
+        elseif v:IsA("UIStroke") then
+            originalValues[v] = v.Transparency
+        elseif v:IsA("ImageLabel") then
+            originalValues[v] = v.ImageTransparency
+        end
+    end
+    for _, v in elements do
+        if v:IsA("Frame") then
+            v.BackgroundTransparency = 1
+        elseif v:IsA("TextLabel") then
+            v.TextTransparency = 1
+        elseif v:IsA("UIStroke") then
+            v.Transparency = 1
+        elseif v:IsA("ImageLabel") then
+            v.ImageTransparency = 1
+        end
+    end
+    for _, v in elements do
+        local tweenProps = {}
+        if v:IsA("Frame") then
+            tweenProps.BackgroundTransparency = originalValues[v]
+        elseif v:IsA("TextLabel") then
+            tweenProps.TextTransparency = originalValues[v]
+        elseif v:IsA("UIStroke") then
+            tweenProps.Transparency = originalValues[v]
+        elseif v:IsA("ImageLabel") then
+            tweenProps.ImageTransparency = originalValues[v]
+        end
+        game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), tweenProps):Play()
+        task.delay(duration, function()
+            local fadeProps = {}
+            if v:IsA("Frame") then
+                fadeProps.BackgroundTransparency = 1
+            elseif v:IsA("TextLabel") then
+                fadeProps.TextTransparency = 1
+            elseif v:IsA("UIStroke") then
+                fadeProps.Transparency = 1
+            elseif v:IsA("ImageLabel") then
+                fadeProps.ImageTransparency = 1
+            end
+            game:GetService("TweenService"):Create(v, TweenInfo.new(0.5), fadeProps):Play()
+        end)
+    end
+    task.delay(duration + 0.6, function()
+        screenGui:Destroy()
+    end)
 end
 return module
