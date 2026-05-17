@@ -1,12 +1,12 @@
 # Roblox Luau Scripter — Portfolio
 
-> Self-taught mobile scripter. I build systems that don't just work, but *feel* right.
+> Self-taught scripter. I build systems that don't just work, but *feel* right.
 
 ---
 
 ## 🎬 Featured Work — Facility Destruction Cinematic
 
-A full cinematic nuclear destruction sequence built entirely on mobile.
+A full cinematic nuclear destruction sequence.
 
 **[▶ Watch the full video](https://drive.google.com/file/d/1Ncu0w3OOulQ4RhfTORRZ7-ipWT5G_D8w/view?usp=drivesdk)**
 
