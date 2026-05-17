@@ -71,9 +71,8 @@ Scripts delivered via **GitHub loader**, one script to your game loads the scrip
 
 | Job Size | Price |
 |---|---|
-| Small script | $5 |
-| Medium system | $10 |
-| Complex / multiple systems | Discuss in DMs |
+| Small scripts | $5-$10 |
+| Larger systems | Discuss in DMs |
 
 Payment: Amazon gift cards only.
 
