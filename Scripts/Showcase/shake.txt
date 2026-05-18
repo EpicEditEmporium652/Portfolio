@@ -1,0 +1,141 @@
+local random = Random.new()
+local runService = game:GetService("RunService")
+local tween = game:GetService("TweenService")
+local contentProvider = game:GetService("ContentProvider")
+local soundService = game:GetService("SoundService")
+local lighting = game:GetService("Lighting")
+local lightBall = workspace:WaitForChild("ffd_light"):WaitForChild("ball")
+
+local clickSound = Instance.new("Sound", workspace)
+clickSound.SoundId = "rbxassetid://121464452775939"
+clickSound.Volume = 10
+
+local explosion = Instance.new("Sound", soundService)
+explosion.SoundId = "rbxassetid://72822762108652"
+explosion.PlaybackSpeed = 1
+
+contentProvider:PreloadAsync({clickSound, explosion})
+
+game.ReplicatedStorage.Shake.OnClientEvent:Connect(function()
+    local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild("Humanoid")
+    explosion:Play()
+    local heartbeatConn
+    local number = Instance.new("NumberValue")
+    heartbeatConn = runService.Heartbeat:Connect(function()
+        number.Value = 0.5 * explosion.PlaybackLoudness / 1000
+        humanoid.CameraOffset = Vector3.new(random:NextNumber(-number.Value, number.Value), random:NextNumber(-number.Value, number.Value), random:NextNumber(-number.Value, number.Value))
+        lightBall:ApplyImpulse(Vector3.new(random:NextNumber(-0.5 * explosion.PlaybackLoudness / 120 * lightBall:GetMass(), 0.5 * explosion.PlaybackLoudness / 120 * lightBall:GetMass()), 0, random:NextNumber(-0.5 * explosion.PlaybackLoudness / 220 * lightBall:GetMass(), 0.5 * explosion.PlaybackLoudness / 220 * lightBall:GetMass())))
+    end)
+    explosion.Ended:Connect(function()
+        number.Value = 0
+        number:Destroy()
+        heartbeatConn:Disconnect()
+        for v = 1, 20 do
+        lightBall.AssemblyLinearVelocity = Vector3.zero
+        lightBall.AssemblyAngularVelocity = Vector3.zero
+        task.wait(0.5)
+        end
+    end)
+    task.wait(26.5 / explosion.PlaybackSpeed)
+    
+    local screenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+    screenGui.DisplayOrder = 99999
+    screenGui.ResetOnSpawn = false
+    screenGui.Enabled = false
+    screenGui.IgnoreGuiInset = true
+    local backgroundFrame = Instance.new("Frame", screenGui)
+    backgroundFrame.Position = UDim2.new(0, 0, 0, 0)
+    backgroundFrame.Size = UDim2.new(1, 0, 1, 0)
+    backgroundFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    local tweenExposure = tween:Create(lighting, TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ExposureCompensation = 10})
+    tweenExposure:Play()
+    local Label = Instance.new("TextLabel", backgroundFrame)
+    Label.BackgroundTransparency = 1
+    Label.Position = UDim2.new(0, 0, 0.17, 0)
+    Label.Size = UDim2.new(1, 0, 0.7, 0)
+    Label.Font = Enum.Font.Code
+    Label.TextXAlignment = Enum.TextXAlignment.Left
+    Label.TextYAlignment = Enum.TextYAlignment.Top
+    Label.TextColor3 = Color3.new(0.5, 0.5, 0.5)
+    Label.TextSize = 36
+    Label.TextWrapped = true
+    Label.Text = ""
+    local text = "The classified facility was destroyed by protocol T-SD-02\nwhich led to full facility destruction on bottomside and\nupperside. High Science announced that someone in the\nfacility wanted to destroy the facility by this protocol.\nThe protocol activation control was locked and nobody can\nhack facility operation system. But someone enter somehow in\nthe operation system and inserted a hack disk in the terminal\nand get access. But for now, we don't have enough information\nwho can destroy the facility."
+    tweenExposure.Completed:Connect(function()
+        screenGui.Enabled = true
+        task.delay(4, function()
+        lighting.ExposureCompensation = 0
+        end)
+        explosion.Ended:Wait()
+        local tweenFrame = tween:Create(backgroundFrame, TweenInfo.new(5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)})
+        tweenFrame:Play()
+        tweenFrame.Completed:Wait()
+        task.delay(2.3, function()
+            clickSound:Play()
+            clickSound.Ended:Wait()
+        end)
+        local pointTracker = 0
+        task.wait(3)
+        local topOutline = Instance.new("Frame", backgroundFrame)
+        topOutline.Position = UDim2.new(0, 0, 0.85, 0)
+        topOutline.Size = UDim2.new(1, 0, 0.01, 0)
+        topOutline.BackgroundColor3 = Color3.fromRGB(210, 209, 213)
+        topOutline.BorderSizePixel = 0
+        topOutline.BackgroundTransparency = 1
+        local gradient = Instance.new("UIGradient", topOutline)
+        gradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.new(0.14, 0.14, 0.14)),
+        ColorSequenceKeypoint.new(0.5, Color3.new(0.5, 0.5, 0.5)),
+        ColorSequenceKeypoint.new(1, Color3.new(0.14, 0.14, 0.14))
+        }
+        local bottomOutline = topOutline:Clone()
+        bottomOutline.Position = UDim2.new(0, 0, 0.15, 0)
+        bottomOutline.Parent = backgroundFrame
+        local titleLabel = Instance.new("TextLabel", backgroundFrame)
+        titleLabel.BackgroundTransparency = 1
+        titleLabel.Position = UDim2.new(0, 0, 0.04, 0)
+        titleLabel.Size = UDim2.new(0.3, 0, 0.1, 0)
+        titleLabel.TextColor3 = Color3.new(0.6, 0.6, 0.6)
+        titleLabel.TextScaled = true
+        titleLabel.Text = "Broadcasting ongoing"
+        titleLabel.Font = Enum.Font.Legacy
+        titleLabel.TextTransparency = 1
+        tween:Create(topOutline, TweenInfo.new(10), {BackgroundTransparency = 0}):Play()
+        tween:Create(bottomOutline, TweenInfo.new(10), {BackgroundTransparency = 0}):Play()
+        tween:Create(titleLabel, TweenInfo.new(10), {TextTransparency = 0}):Play()
+        for v = 1, #text do
+            if v == #text then
+                Label.Text = string.sub(text, 1, v)
+                task.wait(3)
+                tween:Create(Label, TweenInfo.new(2), {TextTransparency = 1}):Play()
+                tween:Create(titleLabel, TweenInfo.new(2), {TextTransparency = 1}):Play()
+                tween:Create(topOutline, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
+                tween:Create(bottomOutline, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
+                task.wait(2)
+                tween:Create(backgroundFrame, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
+                task.wait(3)
+                screenGui:Destroy()
+            elseif string.sub(text, v, v) == "," then
+                Label.Text = string.sub(text, 1, v)
+                task.wait(0.2)
+            elseif v ~= #text and string.sub(text, v, v) == "." then
+                Label.Text = string.sub(text, 1, v)
+                if pointTracker ~= 2 then
+                    pointTracker += 1
+                end
+                task.wait(0.34)
+            elseif string.sub(text, v, v) == "'" then
+                Label.Text = string.sub(text, 1, v)
+                task.wait(0.1)
+            else
+                Label.Text = string.sub(text, 1, v)
+            end
+            if pointTracker == 2 then
+                task.wait(0.05016)
+            else
+                task.wait(0.05054)
+            end
+        end
+    end)
+end)

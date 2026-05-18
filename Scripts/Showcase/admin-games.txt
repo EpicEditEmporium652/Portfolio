@@ -1,0 +1,311 @@
+local prefix = ";"
+local data = game:GetService("DataStoreService")
+local adminStore = data:GetDataStore("Admins")
+local banStore = data:GetDataStore("Banned")
+
+local adminData
+local success, errorMsg = pcall(function()
+    adminData = adminStore:GetAsync("Users") or {}
+end)
+if not success then rmt:FireClient(player, "nf", errorMsg) adminData = adminData or {} end
+local admins = {}
+admins[game.Players:GetNameFromUserIdAsync(game.CreatorId)] = true
+task.spawn(function()
+    if not adminData then return end
+    for _, v in adminData do
+        admins[v] = true
+    end
+end)
+
+local bannedData
+local success, errorMsg = pcall(function()
+    bannedData = banStore:GetAsync("Users") or {}
+end)
+if not success then rmt:FireClient(player, "nf", errorMsg) bannedData = bannedData or {} end
+
+local function getTarget(targetStr, caller)
+    local matches = {}
+    local targetStr = targetStr:lower()
+    if targetStr == "me" then
+        return caller
+    elseif targetStr == "others" then
+        for _, v in game.Players:GetPlayers() do
+            if v ~= caller then table.insert(matches, v) end
+        end
+        return matches
+    elseif targetStr == "all" then
+        for _, v in game.Players:GetPlayers() do
+            table.insert(matches, v)
+        end
+        return matches
+    end
+    for _, v in game.Players:GetPlayers() do
+        if (v.Name:sub(1, #targetStr):lower() == targetStr or v.DisplayName:sub(1, #targetStr):lower() == targetStr) then
+            table.insert(matches, v)
+        end
+    end
+    if #matches == 1 then
+        return matches[1]
+    else
+        return nil
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    task.spawn(function()
+        if not bannedData then return end
+        for _, v in bannedData do
+            if player.Name == v then
+                player:Kick("You're Banned")
+            end
+        end
+    end)
+    player.Chatted:Connect(function(m)
+        if not admins[player.Name] then return end
+        local arg, arg2, arg3
+        local remoteEvent = game.ReplicatedStorage.f
+        local targetPlayer
+        if m:lower():find(" ") then
+            local splitMsg = m:split(" ")
+            arg, arg2 = splitMsg[1], splitMsg[2]
+            if splitMsg[3] then arg3 = splitMsg[3] end
+            targetPlayer = getTarget(arg2, player)
+        else
+            arg = m
+            targetPlayer = player
+        end
+
+        if arg:lower() == prefix .. "fly" then
+            if targetPlayer then
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        remoteEvent:FireClient(v, "fly")
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    remoteEvent:FireClient(targetPlayer, "fly")
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "unfly" then
+            if targetPlayer then
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        remoteEvent:FireClient(v, "un")
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    remoteEvent:FireClient(targetPlayer, "un")
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "kick" then
+            if targetPlayer then
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        if admins[v.Name] then return end
+                        v:Kick((arg3 and ("\n" .. arg3)) or ("\nKicked by " .. player.Name))
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    if admins[targetPlayer.Name] then return end
+                    targetPlayer:Kick((arg3 and ("\n" .. arg3)) or ("\nKicked by " .. player.Name))
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "ban" then
+            if targetPlayer then
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        if admins[v.Name] then return end
+                        table.insert(bannedData, v.Name)
+                        local success, errorMsg = pcall(function()
+                            banStore:SetAsync("Users", bannedData)
+                        end)
+                        if not success then remoteEvent:FireClient(player, "nf", "Failed to store and ban : " .. v.Name .. " : " .. errorMsg) return end
+                        v:Kick((arg3 and ("\n" .. arg3)) or ("\nBanned by " .. player.Name))
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    if admins[targetPlayer.Name] then return end
+                    table.insert(bannedData, targetPlayer.Name)
+                    local success, errorMsg = pcall(function()
+                        banStore:SetAsync("Users", bannedData)
+                    end)
+                    if not success then remoteEvent:FireClient(player, "nf", "Failed to store and ban : " .. targetPlayer.Name .. " : " .. errorMsg) return end
+                    targetPlayer:Kick((arg3 and ("\n" .. arg3)) or ("\nBanned by " .. player.Name))
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "setrank" then
+            if targetPlayer then
+                if admins[targetPlayer.Name] then return end
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        admins[v.Name] = true
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    admins[targetPlayer.Name] = true
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "permrank" then
+            if targetPlayer then
+                if admins[targetPlayer.Name] then return end
+                if not adminData then return end
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        table.insert(adminData, v.Name)
+                        local success, errorMsg = pcall(function()
+                            adminStore:SetAsync("Users", adminData)
+                        end)
+                        if not success then remoteEvent:FireClient(player, "nf", "Failed to store and rank : " .. v.Name .. " : " .. errorMsg) return end
+                        admins[v.Name] = true
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    table.insert(adminData, targetPlayer.Name)
+                    local success, errorMsg = pcall(function()
+                        adminStore:SetAsync("Users", adminData)
+                    end)
+                    if not success then remoteEvent:FireClient(player, "nf", "Failed to store and rank : " .. targetPlayer.Name .. " : " .. errorMsg) return end
+                    admins[targetPlayer.Name] = true
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "removerank" then
+            if targetPlayer then
+                if targetPlayer.UserId == game.CreatorId then return end
+                if not adminData then return end
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        local foundIndex = table.find(adminData, v.Name)
+                        if foundIndex then
+                            table.remove(adminData, foundIndex)
+                            admins[v.Name] = false
+                        else
+                            return
+                        end
+                        local success, errorMsg = pcall(function()
+                            adminStore:SetAsync("Users", adminData)
+                        end)
+                        if not success then remoteEvent:FireClient(player, "nf", "Failed to store and removerank : " .. v.Name .. " : " .. errorMsg) return end
+                    end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                else
+                    local foundIndex = table.find(adminData, targetPlayer.Name)
+                    if foundIndex then
+                        table.remove(adminData, foundIndex)
+                        admins[v.Name] = false
+                    else
+                        return
+                    end
+                    local success, errorMsg = pcall(function()
+                        adminStore:SetAsync("Users", adminData)
+                    end)
+                    if not success then remoteEvent:FireClient(player, "nf", "Failed to store and removerank : " .. targetPlayer.Name .. " : " .. errorMsg) return end
+                    remoteEvent:FireClient(player, "nf", "Success")
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "offrank" then
+            if targetPlayer then return end
+            if admins[arg2] then return end
+            if not arg2 then return end
+            if not adminData then return end
+            local success, errorMsg = pcall(function()
+                game.Players:GetUserIdFromNameAsync(arg2)
+            end)
+            if not success then remoteEvent:FireClient(player, "nf", "Username Invalid : " .. arg2) return end
+            admins[arg2] = true
+            table.insert(adminData, arg2)
+            local success, errorMsg = pcall(function()
+                adminStore:SetAsync("Users", adminData)
+            end)
+            if not success then remoteEvent:FireClient(player, "nf", "Failed to rank : " .. arg2 .. " : " .. errorMsg) return end
+            remoteEvent:FireClient(player, "nf", "Error")
+
+        elseif arg == prefix .. "removeoffrank" then
+            if targetPlayer then return end
+            if not arg2 then return end
+            if not adminData then return end
+            local foundIndex = table.find(adminData, arg2)
+            if foundIndex then
+                admins[arg2] = false
+                table.remove(adminData, foundIndex)
+            else
+                return
+            end
+            local success, errorMsg = pcall(function()
+                adminStore:SetAsync("Users", adminData)
+            end)
+            if not success then remoteEvent:FireClient(player, "nf", "Failed to removeoffrank : " .. arg2 .. " : " .. errorMsg) return end
+            remoteEvent:FireClient(player, "nf", "Success")
+
+        elseif arg == prefix .. "rs" then
+            local success, errorMsg = pcall(function()
+                game:GetService("TeleportService"):TeleportToPrivateServer(game.PlaceId, game:GetService("TeleportService"):ReserveServer(game.PlaceId), game.Players:GetPlayers())
+            end)
+            if not success then remoteEvent:FireClient(player, "nf", "Failed to restart server : " .. errorMsg) end
+
+        elseif arg == prefix .. "goto" then
+            if targetPlayer then
+                if typeof(targetPlayer) == "table" then return end
+                if player.Character and targetPlayer.Character and player.Character:FindFirstChild("HumanoidRootPart") and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character:MoveTo(targetPlayer.Character.HumanoidRootPart.Position)
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "bring" then
+            if targetPlayer then
+                if typeof(targetPlayer) == "table" then
+                    for _, v in targetPlayer do
+                        if player.Character and v.Character and player.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("HumanoidRootPart") then
+                            v.Character:MoveTo(player.Character.HumanoidRootPart.Position)
+                        end
+                    end
+                else
+                    if player.Character and targetPlayer.Character and player.Character:FindFirstChild("HumanoidRootPart") and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                        targetPlayer.Character:MoveTo(player.Character.HumanoidRootPart.Position)
+                    end
+                end
+            else
+                remoteEvent:FireClient(player, "nf", "Error")
+            end
+
+        elseif arg == prefix .. "cmds" then
+            if player.PlayerGui:FindFirstChild("cmd") then return end
+            if arg2 then return end
+            local cmd = game.ServerStorage.Screengui:Clone()
+            cmd.Name = "cmd"
+            cmd.Parent = player.PlayerGui
+            cmd.Frame.kick.TextButton.MouseButton1Click:Connect(function()
+                cmd:Destroy()
+            end)
+
+        end
+    end)
+end)

@@ -1,0 +1,1118 @@
+--settings and stuff
+local runService = game:GetService("RunService")
+local tweenService = game:GetService("TweenService")
+local playersService = game:GetService("Players")
+
+playersService.PlayerAdded:Connect(function(plr)
+    plr.Chatted:Connect(function(m)
+        if m ~= "!chlg" then
+            return
+        end
+        game.ReplicatedStorage.challenge:FireAllClients()
+    end)
+    plr.CharacterAdded:Connect(function(character)
+        character:MoveTo(Vector3.new(-138, 346, 224))
+    end)
+    if plr.Character then
+        plr.Character:MoveTo(Vector3.new(-138, 346, 224))
+    end
+end)
+
+task.delay(1, function()
+    for _, v in workspace:GetDescendants() do
+        if v:IsA("Sound") and v.TimeLength == 0 then
+            v:Destroy()
+        end
+    end
+end)
+
+local thirdButton = workspace:WaitForChild("Buttonu1")
+for _, v in thirdButton:GetChildren() do
+    v:Destroy()
+end
+
+thirdButton:SetAttribute("f", true)
+thirdButton:SetAttribute("h", false)
+thirdButton:SetAttribute("da", false)
+thirdButton:SetAttribute("fa", false)
+thirdButton:SetAttribute("ha", false)
+
+workspace:WaitForChild("Buttonu2"):Destroy()
+workspace.MainModule.selfdestruct.ModelAssets.PreExploderEmitters.center.Bright.AlwaysOnTop = false
+
+local lightAnchor = workspace.ffd_light
+local lightBall = lightAnchor.ball
+
+lightAnchor.Position = Vector3.new(lightAnchor.Position.X, 360.2, lightAnchor.Position.Z)
+lightAnchor.Size = Vector3.new(0.1, 0.1, 0.128)
+
+lightBall.Anchored = false
+
+local ropeAttachment0 = Instance.new("Attachment", lightAnchor)
+local ropeAttachment1 = Instance.new("Attachment", lightBall)
+
+local ropeConstraint = Instance.new("RopeConstraint", lightAnchor)
+ropeConstraint.Attachment0 = ropeAttachment0
+ropeConstraint.Attachment1 = ropeAttachment1
+ropeConstraint.Length = (lightAnchor.Position - lightBall.Position).Magnitude
+ropeConstraint.Visible = true
+ropeConstraint.Color = BrickColor.new("Dark stone grey")
+
+--sounds
+local soundService = game:GetService("SoundService")
+
+soundService:ClearAllChildren()
+
+local warningSound = Instance.new("Sound", soundService)
+warningSound.Name = "Warn"
+warningSound.SoundId = "rbxassetid://108221361208113"
+
+local ffdMusic = Instance.new("Sound", soundService)
+ffdMusic.Name = "Music"
+ffdMusic.SoundId = "rbxassetid://105843660194730"
+ffdMusic.PlaybackSpeed = 1
+
+local ffdActivation = Instance.new("Sound", soundService)
+ffdActivation.Name = "ffd"
+ffdActivation.SoundId = "rbxassetid://75953212933767"
+
+local shutdown = Instance.new("Sound", soundService)
+shutdown.Name = "Shutdown"
+shutdown.Volume = 7
+shutdown.SoundId = "rbxassetid://116432962930688"
+
+local tick = Instance.new("Sound", soundService)
+tick.Name = "fc"
+tick.SoundId = "rbxassetid://135896979852351"
+
+local notify = Instance.new("Sound", soundService)
+notify.Name = "Notify"
+notify.SoundId = "rbxassetid://88931103296223"
+notify.Volume = 10
+
+local danger = Instance.new("Sound", soundService)
+danger.Name = "Danger"
+danger.SoundId = "rbxassetid://127024026391701"
+danger.Volume = 4
+
+--button
+thirdButton.Anchored = true
+thirdButton.Shape = Enum.PartType.Cylinder
+thirdButton.Size = Vector3.new(0.15, 0.8, 0.8)
+thirdButton.CFrame = thirdButton.CFrame * CFrame.Angles(0, 0, math.rad(90)) * CFrame.new(-0.46, -3.5, -0.5)
+thirdButton.Material = Enum.Material.Air
+thirdButton.BrickColor = BrickColor.new("Dark grey metallic")
+
+local mechanismPlate = Instance.new("Part", thirdButton)
+mechanismPlate.Name = "Plate"
+mechanismPlate.Position = thirdButton.Position + Vector3.new(0, 0, 0.1)
+mechanismPlate.Size = Vector3.new(1.2, 0.05, 1.2)
+mechanismPlate.Anchored = true
+mechanismPlate.Material = Enum.Material.Metal
+mechanismPlate.BrickColor = BrickColor.new("Quill grey")
+
+local screw = game:GetService("ServerStorage").screw:Clone()
+screw.Parent = mechanismPlate
+screw.Anchored = true
+screw.Name = "screw"
+screw.Color = Color3.fromRGB(89, 89, 89)
+screw.Size = Vector3.new(0.15, 0.15, 0.15)
+screw.Position = Vector3.new(-137.04, 345.941, 207.18)
+
+local screw2 = screw:Clone()
+screw2.Name = "screw2"
+screw2.Position = screw2.Position - Vector3.new(1, 0, 0)
+screw2.Parent = mechanismPlate
+
+local screw3 = screw2:Clone()
+screw3.Name = "screw3"
+screw3.Position = screw2.Position - Vector3.new(0, 0, 1)
+screw3.Parent = mechanismPlate
+
+local screw4 = screw:Clone()
+screw4.Name = "screw4"
+screw4.Position = screw4.Position - Vector3.new(0, 0, 1)
+screw4.Parent = mechanismPlate
+
+local indicator = Instance.new("Part", thirdButton)
+indicator.Name = "Indicator"
+indicator.Position = thirdButton.Position + Vector3.new(0, 0, 0.54)
+indicator.Size = Vector3.new(0.08, 0.2, 0.2)
+indicator.Anchored = true
+indicator.Material = Enum.Material.SmoothPlastic
+indicator.CFrame = indicator.CFrame * CFrame.Angles(0, 0, math.rad(90))
+indicator.Shape = Enum.PartType.Cylinder
+indicator.Color = Color3.fromRGB(70, 68, 63)
+
+local indicatorGlass = Instance.new("Part", indicator)
+indicatorGlass.Name = "Glass"
+indicatorGlass.Position = indicator.Position
+indicatorGlass.Size = Vector3.new(0.2, 0.2, 0.2)
+indicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+indicatorGlass.Shape = Enum.PartType.Ball
+indicatorGlass.Material = Enum.Material.Glass
+indicatorGlass.Anchored = true
+
+local redButton = thirdButton:Clone()
+local redButtonDetector = Instance.new("ClickDetector")
+for _, v in redButton:GetChildren() do
+    v:Destroy()
+end
+redButton.Material = Enum.Material.SmoothPlastic
+redButton.Size = Vector3.new(0.4, 0.7, 0.7)
+redButton.Color = Color3.fromRGB(149, 0, 0)
+redButton.Name = "btn"
+
+redButton.Parent = thirdButton
+redButtonDetector.Parent = redButton
+
+local controlTable = workspace:WaitForChild("Table")
+
+local function alignToTable(p1, p2)
+    if p2 then
+        p2:PivotTo(p1 * CFrame.new(0, 0, -(-137.5 - controlTable.Position.X)))
+    else
+        p1.Position = p1.Position + Vector3.new(-137.5 - controlTable.Position.X, 0, 0)
+    end
+end
+alignToTable(workspace:WaitForChild("Guide2"):GetPivot(), workspace:WaitForChild("Guide2"))
+alignToTable(workspace:WaitForChild("Screenholder"))
+alignToTable(workspace:WaitForChild("Screen"))
+alignToTable(thirdButton)
+alignToTable(mechanismPlate)
+alignToTable(indicator)
+alignToTable(indicatorGlass)
+alignToTable(redButton)
+
+controlTable.Position = Vector3.new(-137.5, controlTable.Position.Y, controlTable.Position.Z)
+controlTable.Rotation = Vector3.new(0, 180, 0)
+
+local keypadLabel = Instance.new("Texture", controlTable)
+keypadLabel.Texture = "rbxassetid://82702615304116"
+keypadLabel.Face = Enum.NormalId.Top
+keypadLabel.OffsetStudsU = -0.12
+keypadLabel.OffsetStudsV = -0.3
+keypadLabel.StudsPerTileU = controlTable.Size.X
+keypadLabel.StudsPerTileV = controlTable.Size.Z
+
+for _, v in workspace:GetChildren() do
+    if v:IsA("Model") and v.Name == "Ceiling_Light" then
+        if v:FindFirstChildWhichIsA("Script") then
+            v:FindFirstChildWhichIsA("Script"):Destroy()
+        end
+        if v:FindFirstChild("Specks") then
+            v.Specks:Destroy()
+        end
+        if v:FindFirstChild("BeamBase") and v.BeamBase:FindFirstChildWhichIsA("Beam") then
+            v.BeamBase:FindFirstChildWhichIsA("Beam"):Destroy()
+        end
+    end
+end
+
+for _, v in workspace:GetChildren() do
+    if v:IsA("Model") and v.Name == "Blast Door (Ungroup)" then
+        local blastDoorButton1 = v:WaitForChild("Blast Door"):WaitForChild("Door"):WaitForChild("Button1")
+        local blastDoorButton2 = v:WaitForChild("Blast Door"):WaitForChild("Door"):WaitForChild("Button2")
+        blastDoorButton1:WaitForChild("Button1").Color = Color3.fromRGB(151, 0, 0)
+        blastDoorButton1:WaitForChild("Light1").Color = Color3.fromRGB(255, 0, 0)
+        blastDoorButton1:WaitForChild("Button1"):FindFirstChildWhichIsA("ProximityPrompt").Enabled = false
+        blastDoorButton2:WaitForChild("Button2").Color = Color3.fromRGB(151, 0, 0)
+        blastDoorButton2:WaitForChild("Light2").Color = Color3.fromRGB(255, 0, 0)
+        blastDoorButton2:WaitForChild("Button2"):FindFirstChildWhichIsA("ProximityPrompt").Enabled = false
+        v["Blast Door"].Modules.Value.Value = true
+        v["Blast Door"].LockdownPanel.LockDoorButton.LockDoor.Value = true
+        v["Blast Door"].LockdownPanel.LockDoorButton.ClickDetector.MaxActivationDistance = 0
+        v["Blast Door"].LockdownPanel.Part.ClickDetector.MaxActivationDistance = 20
+        local Heavylock1 = v["Blast Door"].Door.HeavyLocks.Lock1
+        local Heavylock2 = v["Blast Door"].Door.HeavyLocks.Lock2
+        local Heavylock3 = v["Blast Door"].Door.HeavyLocks.Lock3
+        Heavylock1.PrimaryPart.CFrame = Heavylock1.PrimaryPart.CFrame * CFrame.new(0, 13.5, 0)
+        Heavylock2.PrimaryPart.CFrame = Heavylock2.PrimaryPart.CFrame * CFrame.new(0, 13.7, 0)
+        Heavylock3.PrimaryPart.CFrame = Heavylock3.PrimaryPart.CFrame * CFrame.new(15, 0, 0)
+    end
+end
+
+for _, v in workspace:GetChildren() do
+    if v:IsA("SpawnLocation") then
+        v.Transparency = 1
+        v.CanCollide = false
+        if v:FindFirstChildWhichIsA("Decal") then
+            v.Decal.Transparency = 1
+        end
+    end
+end
+
+--outer layer table
+local p = Instance.new("Part", workspace)
+p.Position = Vector3.new(-136.36, 346.03, 206.67)
+p.Size = Vector3.new(4.9, 0.2, 0.3)
+p.Material = Enum.Material.Metal
+p.Rotation = Vector3.new(0, -90, 0)
+p.Anchored = true
+
+local p2 = Instance.new("Part", workspace)
+p2.Position = Vector3.new(-143.59, 346.03, 206.63)
+p2.Size = Vector3.new(5, 0.2, 0.3)
+p2.Material = Enum.Material.Metal
+p2.Anchored = true
+p2.Rotation = Vector3.new(0, -90, 0)
+
+local p3 = p2:Clone()
+p3.Position = Vector3.new(-131.41, 346.03, 206.63)
+p3.Parent = workspace
+
+local p4 = Instance.new("Part", workspace)
+p4.Position = Vector3.new(-137.4, 346.03, 208.98)
+p4.Size = Vector3.new(12.1, 0.2, 0.3)
+p4.Material = Enum.Material.Metal
+p4.Anchored = true
+
+local p5 = p4:Clone()
+p5.Position = Vector3.new(p5.Position.X, p5.Position.Y, 204.26)
+p5.Parent = workspace
+
+--levers
+local lever2Plate = mechanismPlate:Clone()
+lever2Plate.Name = "Lever2"
+lever2Plate.Position = Vector3.new(lever2Plate.Position.X - 2.5, lever2Plate.Position.Y, lever2Plate.Position.Z)
+lever2Plate.Parent = workspace
+
+local screws = { "screw", "screw2", "screw3", "screw4" }
+for _, v in screws do
+    lever2Plate:WaitForChild(v).Position = lever2Plate[v].Position - Vector3.new(2.5, 0, 0)
+end
+
+local leverBase = Instance.new("Part", lever2Plate)
+leverBase.Anchored = true
+leverBase.Name = "Layer"
+leverBase.Position = lever2Plate.Position + Vector3.new(0, 0, -0.2)
+leverBase.Size = Vector3.new(0.1, 0.2, 0.2)
+leverBase.Shape = Enum.PartType.Cylinder
+leverBase.Rotation = Vector3.new(0, 0, 90)
+leverBase.Material = Enum.Material.Metal
+leverBase.Color = Color3.new(0.4, 0.4, 0.4)
+
+local leverRod = leverBase:Clone()
+leverRod.Name = "Lever"
+leverRod.Color = Color3.new(0.6, 0.6, 0.6)
+leverRod.Size = Vector3.new(0.3, 0.15, 0.15)
+leverRod.Parent = lever2Plate
+
+local leverHandle = leverRod:Clone()
+leverHandle.Name = "Handle"
+leverHandle.Size = Vector3.new(0.7, 0.15, 0.15)
+leverHandle.Position = leverHandle.Position + Vector3.new(0, 0.15, 0)
+leverHandle.Rotation = Vector3.new(0, 0, 0)
+leverHandle.Material = Enum.Material.Metal
+leverHandle.Color = Color3.new(1, 1, 1)
+
+local handleMesh = Instance.new("SpecialMesh", leverHandle)
+handleMesh.MeshType = Enum.MeshType.Sphere
+
+local click = Instance.new("ClickDetector", leverHandle)
+leverHandle.Parent = leverRod
+
+local lever2Indicator = thirdButton.Indicator:Clone()
+lever2Indicator.Position = Vector3.new(leverRod.Position.X, lever2Indicator.Position.Y, lever2Indicator.Position.Z)
+lever2Indicator.Parent = lever2Plate
+
+local lever2IndicatorGlass = lever2Indicator.Glass
+lever2IndicatorGlass.Position = Vector3.new(leverRod.Position.X, lever2Indicator.Position.Y, lever2Indicator.Position.Z)
+
+local lever1Plate = lever2Plate:Clone()
+lever1Plate.Name = "Lever1"
+lever1Plate.Parent = workspace
+lever1Plate.Position = Vector3.new(lever1Plate.Position.X - 2.5, lever1Plate.Position.Y, lever1Plate.Position.Z)
+
+local lever1Base = lever1Plate:WaitForChild("Layer")
+local lever1Rod = lever1Plate:WaitForChild("Lever")
+local lever1Handle = lever1Rod:WaitForChild("Handle")
+local lever1Indicator = lever1Plate:WaitForChild("Indicator")
+local lever1Glass = lever1Indicator:WaitForChild("Glass")
+
+lever1Base.Position = lever1Plate.Position + Vector3.new(0, 0, -0.2)
+lever1Rod.Position = lever1Plate.Layer.Position
+lever1Handle.Position = lever1Plate.Lever.Position + Vector3.new(0, 0.15, 0)
+lever1Indicator.Position = Vector3.new(lever1Rod.Position.X, lever1Indicator.Position.Y, lever1Indicator.Position.Z)
+lever1Glass.Position = Vector3.new(lever1Rod.Position.X, lever1Indicator.Position.Y, lever1Indicator.Position.Z)
+for _, v in screws do
+    lever1Plate:WaitForChild(v).Position = lever1Plate[v].Position - Vector3.new(2.5, 0, 0)
+end
+
+--screen
+local screenPart = workspace:WaitForChild("Screen")
+screenPart.Position = Vector3.new(-137.389, 347.014, 202.491)
+screenPart.Size = Vector3.new(2.812, 2.289, 4.9)
+screenPart.Rotation = Vector3.new(62.254, -90, 0)
+screenPart.Material = Enum.Material.Glass
+
+Instance.new("ClickDetector", screenPart).MaxActivationDistance = 10
+
+local abortSound = Instance.new("Sound", screenPart)
+abortSound.Name = "cancel"
+abortSound.SoundId = "rbxassetid://76130823988465"
+abortSound.Volume = 7
+
+local screenBorder = screenPart:Clone()
+screenBorder.Name = "Border"
+screenBorder.CFrame = screenBorder.CFrame * CFrame.new(0, -0.101, 0)
+screenBorder.Size = screenBorder.Size + Vector3.new(0.2, 0.2, 0.2)
+screenBorder.BrickColor = BrickColor.new("Dark stone grey")
+screenBorder.Material = Enum.Material.SmoothPlastic
+screenBorder.Parent = screenPart
+
+local screenSurfaceGui = Instance.new("SurfaceGui", screenPart)
+screenSurfaceGui.Adornee = screenPart
+screenSurfaceGui.Face = Enum.NormalId.Top
+screenSurfaceGui.ClipsDescendants = true
+screenSurfaceGui.CanvasSize = Vector2.new(1000, 600)
+
+local statusLabel = Instance.new("TextLabel", screenSurfaceGui)
+statusLabel.BackgroundTransparency = 0.8
+statusLabel.BorderSizePixel = 0
+statusLabel.Position = UDim2.new(0, 0, 0.3, 0)
+statusLabel.Size = UDim2.new(1, 0, 0.25, 0)
+statusLabel.TextSize = 60
+statusLabel.TextColor3 = Color3.fromRGB(179, 179, 179)
+statusLabel.Text = "<< Not Ready >>"
+
+local descriptionLabel = statusLabel:Clone()
+descriptionLabel.Position = UDim2.new(0, 0, 0.6, 0)
+descriptionLabel.Size = UDim2.new(1, 0, 0.1, 0)
+descriptionLabel.TextSize = 30
+descriptionLabel.TextColor3 = Color3.fromRGB(113, 113, 113)
+descriptionLabel.Text = "<< Protocol non-active >>"
+descriptionLabel.Parent = screenSurfaceGui
+
+local systemLabel = statusLabel:Clone()
+systemLabel.BackgroundTransparency = 1
+systemLabel.Position = UDim2.new(0, 0, 0, 0)
+systemLabel.Size = UDim2.new(1, 0, 0.1, 0)
+systemLabel.TextColor3 = Color3.fromRGB(113, 113, 113)
+systemLabel.TextSize = 30
+systemLabel.Text = "FFD System"
+systemLabel.Parent = screenSurfaceGui
+
+local stroke = Instance.new("UIStroke", statusLabel)
+stroke.Thickness = 5
+stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+stroke.Color = Color3.fromRGB(154, 154, 154)
+
+local stroke2 = stroke:Clone()
+stroke2.Parent = descriptionLabel
+
+local scanlineBeam = Instance.new("Beam", screenSurfaceGui)
+scanlineBeam.LightEmission = 1
+scanlineBeam.Texture = "rbxassetid://4841986377"
+scanlineBeam.TextureLength = 0.8
+scanlineBeam.Brightness = 5
+scanlineBeam.TextureSpeed = 0
+scanlineBeam.Transparency = NumberSequence.new(0)
+scanlineBeam.Width0 = 4.9
+scanlineBeam.Width1 = 4.9
+
+local beamTopAttachment = Instance.new("Attachment", workspace:WaitForChild("Screen"))
+beamTopAttachment.Name = "top"
+beamTopAttachment.WorldCFrame = CFrame.new(
+    -137.389008,
+    348.790466,
+    202.850128,
+    -3.81803211e-08,
+    -1,
+    0,
+    0.465552658,
+    -1.77749513e-08,
+    -0.885020196,
+    0.885020196,
+    -3.37903572e-08,
+    0.465552658
+)
+
+local beamBottomAttachment = Instance.new("Attachment", workspace:WaitForChild("Screen"))
+beamBottomAttachment.Name = "bot"
+beamBottomAttachment.WorldCFrame = CFrame.new(
+    -137.389008,
+    346.30661,
+    204.164139,
+    -4.37113883e-08,
+    -1,
+    0,
+    0.465552658,
+    -2.03499546e-08,
+    -0.885020196,
+    0.885020196,
+    -3.86854637e-08,
+    0.465552658
+)
+
+scanlineBeam.Attachment0 = beamTopAttachment
+scanlineBeam.Attachment1 = beamBottomAttachment
+for _, v in workspace:GetDescendants() do
+    if v:IsA("TextLabel") and v.Text == "this screen is currently broken" then
+        v.Parent.Parent.Parent:Destroy()
+    end
+end
+
+--keycard
+local tool = Instance.new("Tool", game.StarterPack)
+tool.Name = "FFD Keycard"
+tool.Grip = CFrame.Angles(0, 0, math.rad(90))
+
+local handle = Instance.new("Part", tool)
+handle.Name = "Handle"
+handle.BottomSurface = Enum.SurfaceType.Smooth
+handle.CFrame = CFrame.new(-175.5, 370.757, 239.7)
+handle.Orientation = Vector3.new(0.853, 59.058, -91.415)
+handle.Size = Vector3.new(0.62, 0.014, 1.02) * 1.5
+handle.TopSurface = Enum.SurfaceType.Smooth
+
+local leftDecal = Instance.new("Decal", handle)
+leftDecal.Texture = "rbxassetid://140308095240162"
+leftDecal.Face = Enum.NormalId.Top
+
+local rightDecal = Instance.new("Decal", handle)
+rightDecal.Texture = "rbxassetid://135634571643095"
+rightDecal.Face = Enum.NormalId.Bottom
+
+--keypad (not full)
+local keypadPlate = mechanismPlate:Clone()
+keypadPlate.Name = "Keypad"
+keypadPlate.Position = keypadPlate.Position + Vector3.new(2.23, 0, 0.147)
+keypadPlate.Size = Vector3.new(0.788, 0.05, 1.496)
+keypadPlate.Parent = workspace
+
+local wrongIndicator = indicator:Clone()
+wrongIndicator.Name = "Indicator-Wrong"
+wrongIndicator.Position = wrongIndicator.Position + Vector3.new(2.15, 0, 0.3)
+wrongIndicator.Parent = keypadPlate
+
+local wrongIndicatorGlass = wrongIndicator:WaitForChild("Glass")
+wrongIndicatorGlass.Position = wrongIndicator.Position
+wrongIndicatorGlass.Material = Enum.Material.Neon
+wrongIndicatorGlass.Color = Color3.new(1, 0, 0)
+
+local correctIndicator = wrongIndicator:Clone()
+correctIndicator.Name = "Indicator-Correct"
+correctIndicator.Position = correctIndicator.Position + Vector3.new(0.3, 0, 0)
+correctIndicator.Parent = keypadPlate
+
+local correctIndicatorGlass = correctIndicator:WaitForChild("Glass")
+correctIndicatorGlass.Material = Enum.Material.Glass
+correctIndicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+correctIndicatorGlass.Position = correctIndicator.Position
+
+--scanner
+local scanner = keypadPlate:Clone()
+scanner.Name = "Scanner"
+scanner.Position = scanner.Position + Vector3.new(2, 0, 0)
+scanner.Size = scanner.Size + Vector3.new(2, 0, 1)
+scanner.Material = Enum.Material.Metal
+scanner.Color = Color3.fromRGB(140, 140, 140)
+scanner.Rotation = Vector3.new(0, 180, 0)
+scanner.Parent = workspace
+for _, v in scanner:GetChildren() do
+    v:Destroy()
+end
+
+local scannerTexture = Instance.new("Texture", scanner)
+scannerTexture.Texture = "rbxassetid://127815482311411"
+scannerTexture.OffsetStudsU = 0.1
+scannerTexture.OffsetStudsV = -2.6
+scannerTexture.StudsPerTileU = 3
+scannerTexture.StudsPerTileV = 3
+scannerTexture.Face = Enum.NormalId.Top
+
+local scannerReceiver = scanner:Clone()
+scannerReceiver.Name = "Receiver"
+scannerReceiver.Color = Color3.new(0.7, 0.7, 0.7)
+scannerReceiver.Position = scannerReceiver.Position + Vector3.new(0, 0.013, 0)
+scannerReceiver.Size = (scannerReceiver.Size * 0.53) + Vector3.new(0, 0, 0.5)
+scannerReceiver.Parent = scanner
+
+local receiverOutline = scannerReceiver:Clone()
+receiverOutline.Name = "Outline"
+receiverOutline.Position = receiverOutline.Position + Vector3.new(0, -0.0001, 0)
+receiverOutline.Size = receiverOutline.Size + Vector3.new(0.05, 0, 0.05)
+receiverOutline.Color = Color3.new(1, 1, 1)
+receiverOutline.Parent = scannerReceiver
+
+local decalHolder = scannerReceiver:Clone()
+decalHolder.Name = "DecalHolder"
+decalHolder.Position = Vector3.new(decalHolder.Position.X, 345.982, decalHolder.Position.Z)
+decalHolder.Size = Vector3.new(0.5 * 1.4, decalHolder.Size.Y, 0.7 * 1.4)
+decalHolder.Color = Color3.fromRGB(200, 200, 200)
+decalHolder.Parent = scannerReceiver
+
+local engageDecal = Instance.new("Decal", decalHolder)
+engageDecal.Texture = "rbxassetid://88319346176633"
+engageDecal.Face = Enum.NormalId.Top
+engageDecal.Color3 = Color3.fromRGB(220, 220, 220)
+
+local scannerIndicator = correctIndicator:Clone()
+scannerIndicator.Name = "Indicator"
+scannerIndicator.Position = scannerIndicator.Position + Vector3.new(1.85, 0, 0.1)
+scannerIndicator.Glass.Position = scannerIndicator.Glass.Position + Vector3.new(1.85, 0, 0.1)
+scannerIndicator.Parent = scanner
+
+local keycardPrompt = Instance.new("ProximityPrompt", scanner)
+keycardPrompt.Enabled = false
+keycardPrompt.ActionText = "Scan"
+keycardPrompt.ObjectText = "Keycard Reader"
+keycardPrompt.HoldDuration = 2
+keycardPrompt.Style = Enum.ProximityPromptStyle.Custom
+keycardPrompt.MaxActivationDistance = 6
+--finish
+
+--p1
+lever1Plate.Lever.Handle:WaitForChild("ClickDetector").MouseClick:Connect(function()
+    if not thirdButton:GetAttribute("f") then
+        return
+    end
+    thirdButton:SetAttribute("f", false)
+    game.ReplicatedStorage.p1:FireAllClients()
+    task.delay(8, function()
+        statusLabel.Text = "<< Control Engaged >>"
+        descriptionLabel.Text = "<< T-SD-02 protocol activation in progress >>"
+        statusLabel.TextSize = 62
+    end)
+    task.delay(1, function()
+        lever1Glass.Material = Enum.Material.Neon
+        lever1Glass.Color = Color3.fromRGB(0, 255, 0)
+        warningSound:Play()
+        warningSound.Ended:Once(function()
+            thirdButton:SetAttribute("h", true)
+        end)
+    end)
+    game.ReplicatedStorage.Tween:FireAllClients(lever1Handle, 2)
+    task.wait(0.2)
+    lever1Handle.Rotation = Vector3.new(0, -90, 0)
+end)
+
+--p2
+click.MouseClick:Connect(function()
+    if not thirdButton:GetAttribute("h") then
+        return
+    end
+    thirdButton:SetAttribute("h", false)
+    task.delay(1, function()
+        lever2IndicatorGlass.Material = Enum.Material.Neon
+        lever2IndicatorGlass.Color = Color3.fromRGB(0, 255, 0)
+        task.wait(1)
+        local tickInterval = 0.03
+        game.ReplicatedStorage.p2:FireAllClients(tickInterval)
+        task.wait((tickInterval * 100) + tickInterval + 1)
+        statusLabel.Text = "<< System Prepared >>"
+        descriptionLabel.Text = "<< Awaiting start signal >>"
+        statusLabel.TextSize = 66
+        thirdButton:SetAttribute("da", true)
+    end)
+    game.ReplicatedStorage.Tween:FireAllClients(leverHandle, 2)
+    task.wait(0.2)
+    leverHandle.Rotation = Vector3.new(0, -90, 0)
+end)
+
+--p3
+local abortTimer
+redButtonDetector.MouseClick:Connect(function()
+    if not thirdButton:GetAttribute("da") then
+        return
+    end
+    thirdButton:SetAttribute("da", false)
+    task.delay(1, function()
+        game.ReplicatedStorage.p3:FireAllClients(1)
+        task.delay(6, function()
+            statusLabel.Text = "<< Start Engaged >>"
+            descriptionLabel.Text = "<< Protocol T-SD-02 activated >>"
+            statusLabel.TextSize = 64
+        end)
+        indicatorGlass.Material = Enum.Material.Neon
+        indicatorGlass.Color = Color3.fromRGB(0, 255, 0)
+        task.wait(20.72 + 20.1)
+        thirdButton:SetAttribute("fa", true)
+        statusLabel.Text = "<< FFD is now ready for engaging >>"
+        descriptionLabel.Text = "<< Awaiting confirmation signal >>"
+        statusLabel.TextSize = 44
+        task.wait(5)
+        -- ADDR soundService.AmbientReverb = Enum.ReverbType.NoReverb
+        abortTimer = task.delay(61, function()
+            thirdButton:SetAttribute("f", true)
+            thirdButton:SetAttribute("h", false)
+            thirdButton:SetAttribute("da", false)
+            thirdButton:SetAttribute("fa", false)
+            thirdButton:SetAttribute("ha", false)
+            -- ADDR soundService.AmbientReverb = Enum.ReverbType.City
+            lever1Glass.Color = Color3.fromRGB(0, 200, 0)
+            lever1Glass.Material = Enum.Material.SmoothPlastic
+            lever2IndicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+            lever2IndicatorGlass.Material = Enum.Material.SmoothPlastic
+            indicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+            indicatorGlass.Material = Enum.Material.SmoothPlastic
+            statusLabel.Text = "<< Not Ready >>"
+            descriptionLabel.Text = "<< Protocol non-active >>"
+            statusLabel.TextSize = 60
+            descriptionLabel.TextSize = 30
+            game.ReplicatedStorage.Tween:FireAllClients(leverHandle, 3)
+            game.ReplicatedStorage.Tween:FireAllClients(lever1Handle, 3)
+        end)
+    end)
+    game.ReplicatedStorage.Tween:FireAllClients(redButton, 1)
+end)
+
+--p4
+local elevatorCar = workspace:WaitForChild("Elevator"):WaitForChild("Car")
+local dashboard = elevatorCar:WaitForChild("Dashboard")
+local dashboardBase = dashboard:WaitForChild("Base")
+
+local keypadScreen = Instance.new("Part", keypadPlate)
+keypadScreen.Anchored = true
+keypadScreen.Name = "Screen"
+keypadScreen.Position = Vector3.new(-135.319, 345.969, 206.235)
+keypadScreen.Rotation = Vector3.new(0, -90, 0)
+keypadScreen.Size = Vector3.new(0.22, 0.05, 0.66)
+keypadScreen.Color = Color3.new(0, 0, 0)
+
+local keypadScreenGui = Instance.new("SurfaceGui", keypadScreen)
+keypadScreenGui.Adornee = keypadScreen
+keypadScreenGui.CanvasSize = Vector2.new(600, 200)
+keypadScreenGui.ClipsDescendants = true
+keypadScreenGui.Face = Enum.NormalId.Top
+
+local codeDisplay = Instance.new("TextLabel", keypadScreenGui)
+codeDisplay.Size = UDim2.new(1, 0, 1, 0)
+codeDisplay.BackgroundTransparency = 1
+codeDisplay.TextColor3 = Color3.fromRGB(174, 174, 174)
+codeDisplay.TextSize = 100
+codeDisplay.Text = ""
+
+local keypadButtons = Instance.new("Model", keypadPlate)
+keypadButtons.Name = "Buttons"
+
+local xOffset = 0
+local zOffset = 0
+local code = string.format("%04d", math.random(0000, 9999))
+local keypadDetectors = {}
+
+for v = 1, 12 do
+    if v == 4 then
+        xOffset = 0
+        zOffset = zOffset - 0.229
+    elseif v == 7 then
+        xOffset = 0
+        zOffset = zOffset - 0.229
+    elseif v == 10 then
+        xOffset = 0
+        zOffset = zOffset - 0.229
+    end
+
+    local keypadButton = Instance.new("Part", keypadButtons)
+    keypadButton.Anchored = true
+    keypadButton.Name = v
+    keypadButton.Position = Vector3.new(-135.55 + xOffset, 345.98, 207.176 + zOffset)
+    keypadButton.Size = Vector3.new(0.2, 0.05, 0.2)
+    keypadButton.Color = Color3.fromRGB(180, 180, 180)
+    keypadButton.Rotation = Vector3.new(0, -90, 0)
+    keypadButton.Material = Enum.Material.Metal
+
+    if v ~= 1 and v ~= 3 then
+        local srf = Instance.new("SurfaceGui", keypadButton)
+        srf.Adornee = keypadButton
+        srf.Face = Enum.NormalId.Top
+        srf.CanvasSize = Vector2.new(200, 200)
+
+        local digitLabel = Instance.new("TextLabel", srf)
+        digitLabel.Size = UDim2.new(1, 0, 1, 0)
+        digitLabel.BackgroundTransparency = 1
+        digitLabel.TextColor3 = Color3.new(0, 0, 0)
+        digitLabel.TextSize = 100
+
+        if v == 2 then
+            digitLabel.Text = "0"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 4 then
+            digitLabel.Text = "1"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 5 then
+            digitLabel.Text = "2"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 6 then
+            digitLabel.Text = "3"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 7 then
+            digitLabel.Text = "4"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 8 then
+            digitLabel.Text = "5"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 9 then
+            digitLabel.Text = "6"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 10 then
+            digitLabel.Text = "7"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 11 then
+            digitLabel.Text = "8"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        elseif v == 12 then
+            digitLabel.Text = "9"
+            local ClickDetector = Instance.new("ClickDetector", keypadButton)
+            table.insert(keypadDetectors, ClickDetector)
+            ClickDetector.MouseClick:Connect(function()
+                if not thirdButton:GetAttribute("fa") then
+                    return
+                end
+                if #codeDisplay.Text == 4 then
+                    return
+                end
+                codeDisplay.Text = codeDisplay.Text .. digitLabel.Text
+            end)
+        end
+    elseif v == 1 then
+        keypadButton.Color = Color3.fromRGB(174, 0, 0)
+        local ClickDetector = Instance.new("ClickDetector", keypadButton)
+        table.insert(keypadDetectors, ClickDetector)
+        ClickDetector.MouseClick:Connect(function()
+            if not thirdButton:GetAttribute("fa") then
+                return
+            end
+            codeDisplay.Text = ""
+        end)
+    elseif v == 3 then
+        keypadButton.Color = Color3.fromRGB(0, 108, 0)
+        local ClickDetector = Instance.new("ClickDetector", keypadButton)
+        table.insert(keypadDetectors, ClickDetector)
+        ClickDetector.MouseClick:Connect(function()
+            if not thirdButton:GetAttribute("fa") then
+                return
+            end
+            if codeDisplay.Text == code then
+                thirdButton:SetAttribute("fa", false)
+                for _, v in keypadDetectors do
+                    v.MaxActivationDistance = 0
+                end
+                codeDisplay.Text = "Confirmed"
+                codeDisplay.TextSize = 80
+                correctIndicatorGlass.Material = Enum.Material.Neon
+                correctIndicatorGlass.Color = Color3.new(0, 1, 0)
+                wrongIndicatorGlass.Material = Enum.Material.Glass
+                wrongIndicatorGlass.Color = Color3.fromRGB(200, 0, 0)
+                game.ReplicatedStorage.p3:FireAllClients(2)
+                if abortTimer then
+                    task.cancel(abortTimer)
+                end -- [[ADDR soundService.AmbientReverb = Enum.ReverbType.GenericReverb]]
+                task.wait(2)
+                thirdButton:SetAttribute("ha", true)
+                keycardPrompt.Enabled = true
+                statusLabel.Text = "<< FFD sequence confirmed, awaiting FFD engage signal >>"
+                statusLabel.TextSize = 32
+            else
+                for _, v in keypadDetectors do
+                    v.MaxActivationDistance = 0
+                end
+                codeDisplay.Text = "Denied"
+                task.wait(1)
+                for _, v in keypadDetectors do
+                    v.MaxActivationDistance = 32
+                end
+                codeDisplay.Text = ""
+            end
+        end)
+    end
+    xOffset = xOffset + 0.229
+end
+
+local dashboardPlate = Instance.new("Part", dashboard)
+dashboardPlate.Anchored = true
+dashboardPlate.Name = "Code"
+dashboardPlate.Size = dashboardBase.Size
+dashboardPlate.Position = dashboardBase.Position + Vector3.new(0, 0.7, 0)
+dashboardPlate.Color = Color3.fromRGB(88, 88, 88)
+
+local screenPlate = dashboardPlate:Clone()
+screenPlate.Name = "Screen"
+screenPlate.Color = Color3.new(0, 0, 0)
+screenPlate.Position = screenPlate.Position + Vector3.new(-0.001, 0, 0)
+screenPlate.Size = Vector3.new(0.1, 0.7 * 0.5, 2.3 * 0.5)
+screenPlate.Parent = dashboardPlate
+
+local codeScreen = dashboard.Indicator.Frame:Clone()
+codeScreen.Position = screenPlate.Position - Vector3.new(0.01, 0, 0)
+codeScreen.Size = screenPlate.Size
+codeScreen.Parent = screenPlate
+
+local codeScreenGui = Instance.new("SurfaceGui", screenPlate)
+codeScreenGui.Adornee = screenPlate
+codeScreenGui.Face = Enum.NormalId.Left
+codeScreenGui.CanvasSize = Vector2.new(450, 150)
+
+local codeLabel = Instance.new("TextLabel", codeScreenGui)
+codeLabel.BackgroundTransparency = 1
+codeLabel.Size = UDim2.new(1, 0, 1, 0)
+codeLabel.TextSize = 100
+codeLabel.TextColor3 = Color3.new(1, 1, 1)
+codeLabel.Font = Enum.Font.Gotham
+codeLabel.Text = code
+
+dashboardPlate.Anchored = false
+local weld = Instance.new("WeldConstraint", dashboardPlate)
+weld.Part0 = dashboardPlate
+weld.Part1 = dashboard.Base
+
+screenPlate.Anchored = false
+local weld = Instance.new("WeldConstraint", screenPlate)
+weld.Part0 = screenPlate
+weld.Part1 = dashboardPlate
+
+codeScreen.Anchored = false
+local weld = Instance.new("WeldConstraint", codeScreen)
+weld.Part0 = codeScreen
+weld.Part1 = screenPlate
+
+--p5
+keycardPrompt.Triggered:Connect(function(plr)
+    if not thirdButton:GetAttribute("ha") and not plr.Character:FindFirstChild("FFD Keycard") then
+        return
+    end
+    thirdButton:SetAttribute("ha", false)
+    game.ReplicatedStorage.p5:FireAllClients(plr)
+    task.wait(0.6)
+    scannerIndicator.Glass.Material = Enum.Material.Neon
+    scannerIndicator.Glass.Color = Color3.fromRGB(0, 255, 0)
+    statusLabel.Text = "<< FFD engaged >>"
+    descriptionLabel.Text = "<< Activating phase 1 >>"
+    task.wait(2)
+    keycardPrompt.Enabled = false
+    if scanner:FindFirstChildOfClass("Highlight") then
+        scanner:FindFirstChildOfClass("Highlight"):Destroy()
+    end
+    for _, v in workspace:GetChildren() do
+        if v.Name == "Blast Door (Ungroup)" or v.Name == "Elevator" then
+            for _, d in v:GetDescendants() do
+                if d:IsA("BaseScript") and d.Enabled then
+                    d.Enabled = false
+                    task.delay(23.5, function()
+                        d.Enabled = true
+                    end)
+                end
+            end
+        end
+    end
+    local originalColors = {}
+    for _, d in workspace:GetDescendants() do
+        if d:IsA("Light") and d.Enabled then
+            originalColors[d] = d.Color
+            d.Enabled = false
+            d.Color = Color3.fromRGB(204, 100, 0)
+            task.delay(23.5, function()
+                d.Enabled = true
+            end)
+        elseif d:IsA("BasePart") and d.Material == Enum.Material.Neon then
+            if
+                d:FindFirstChildOfClass("ClickDetector")
+                or d:FindFirstAncestor("Blast Door (Ungroup)")
+                or d:FindFirstAncestor("Blast Door")
+                or d:FindFirstAncestor("Elevator")
+                or d:FindFirstAncestor("Lever1")
+                or d:FindFirstAncestor("Lever2")
+                or d:FindFirstAncestor("Buttonu1")
+                or d:FindFirstAncestor("Keypad")
+                or d:FindFirstAncestor("Scanner")
+                or d:FindFirstAncestor("Investigation Heavy Duty Blast Door")
+                or d:FindFirstAncestor("Nuclear bast Door")
+            then
+                d.Material = Enum.Material.SmoothPlastic
+                task.delay(23.5 / ffdMusic.PlaybackSpeed, function()
+                    d.Material = Enum.Material.Neon
+                end)
+            else
+                originalColors[d] = d.Color
+                d.Material = Enum.Material.SmoothPlastic
+                task.delay(23.5, function()
+                    d.Color = Color3.fromRGB(204, 100, 0)
+                    d.Material = Enum.Material.Neon
+                end)
+            end
+        end
+    end
+    screenSurfaceGui.Enabled = false
+    scanlineBeam.Enabled = false
+    task.delay(23.5, function()
+        screenSurfaceGui.Enabled = true
+        scanlineBeam.Enabled = true
+    end)
+    task.spawn(function()
+        for _, v in workspace:GetChildren() do
+            if v.Name == "Blast Door (Ungroup)" or v.Name == "Blast Door" or v.Name == "Elevator" then
+                for _, d in v:GetDescendants() do
+                    if d:IsA("Sound") and d.IsPlaying and d.TimeLength ~= 0 then
+                        d.Playing = false
+                        task.delay(23.5, function()
+                            d.Playing = true
+                        end)
+                    elseif d:IsA("SurfaceGui") and d.Enabled then
+                        d.Enabled = false
+                        task.delay(23.5, function()
+                            d.Enabled = true
+                        end)
+                    end
+                end
+            end
+        end
+    end)
+    task.delay(23.5, function()
+        notify:Play()
+        task.wait(0.5)
+        danger:Play()
+        game.ReplicatedStorage.e:FireAllClients("Danger! Full facility destruction will occur in T - 2 minutes!", 13)
+    end)
+    task.delay(ffdMusic.TimeLength / ffdMusic.PlaybackSpeed, function()
+        game.ReplicatedStorage.Shake:FireAllClients()
+        task.wait(31)
+        for _, v in keypadDetectors do
+            v.MaxActivationDistance = 32
+        end
+        thirdButton:SetAttribute("f", true)
+        thirdButton:SetAttribute("h", false)
+        thirdButton:SetAttribute("da", false)
+        thirdButton:SetAttribute("fa", false)
+        thirdButton:SetAttribute("ha", false)
+        for v, co in pairs(originalColors) do
+            v.Color = co
+        end
+        lever1Glass.Color = Color3.fromRGB(0, 200, 0)
+        lever1Glass.Material = Enum.Material.SmoothPlastic
+        lever2IndicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+        lever2IndicatorGlass.Material = Enum.Material.SmoothPlastic
+        indicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+        indicatorGlass.Material = Enum.Material.SmoothPlastic
+        wrongIndicatorGlass.Material = Enum.Material.Neon
+        wrongIndicatorGlass.Color = Color3.new(1, 0, 0)
+        correctIndicatorGlass.Material = Enum.Material.Glass
+        correctIndicatorGlass.Color = Color3.fromRGB(0, 200, 0)
+        scannerIndicator.Glass.Material = Enum.Material.Glass
+        scannerIndicator.Glass.Color = Color3.fromRGB(0, 200, 0)
+        statusLabel.Text = "<< Not Ready >>"
+        descriptionLabel.Text = "<< Protocol non-active >>"
+        statusLabel.TextSize = 60
+        descriptionLabel.TextSize = 30
+        lever1Handle.Rotation = Vector3.new(0, 0, 0)
+        leverHandle.Rotation = Vector3.new(0, 0, 0)
+        codeDisplay.Text = ""
+        code = string.format("%04d", math.random(0000, 9999))
+        codeLabel.Text = code
+        for _, v in game:GetService("Players"):GetPlayers() do
+            v:LoadCharacter()
+            if v.Character:FindFirstChildOfClass("ForceField") then
+                v.Character:FindFirstChildOfClass("ForceField"):Destroy()
+            end
+        end
+    end)
+end)
+
+-- commands
+game.Players.PlayerAdded:Connect(function(plr)
+    plr.Chatted:Connect(function(message)
+        local message = message:lower()
+        if message == "!p1" then
+            thirdButton:SetAttribute("f", true)
+        elseif message == "!p2" then
+            thirdButton:SetAttribute("h", true)
+        elseif message == "!p3" then
+            thirdButton:SetAttribute("da", true)
+        elseif message == "!p4" then
+            thirdButton:SetAttribute("fa", true)
+        elseif message == "!p5" then
+            keycardPrompt.Enabled = true
+            thirdButton:SetAttribute("ha", true)
+        end
+    end)
+end)
