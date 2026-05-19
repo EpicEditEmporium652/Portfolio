@@ -215,7 +215,7 @@ game.Players.PlayerAdded:Connect(function(player)
                     local foundIndex = table.find(adminData, targetPlayer.Name)
                     if foundIndex then
                         table.remove(adminData, foundIndex)
-                        admins[v.Name] = false
+                        admins[targetPlayer.Name] = false
                     else
                         return
                     end
