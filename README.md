@@ -14,11 +14,11 @@ A full cinematic nuclear destruction sequence.
 
 ### What's in it:
 - 🔴 Sequential button system with indicator lights and screen display
-- 🪪 Keycard scanner — detects equipped item, plays swipe animation on correct axis, returns card to player
+- 🪪 Keycard scanner, detects equipped item, plays swipe animation on correct axis, returns card to player
 - ⌨️ Functional keypad with code validation and indicator feedback
 - 💡 Physics-based hanging lamp synced to audio via `PlaybackLoudness`
 - 📷 Camera shake driven by real-time audio amplitude every Heartbeat frame
-- ⚡ Camera exposure flash (`ExposureCompensation`) for the nuclear blast — not a white overlay, actual lighting
+- ⚡ Camera exposure flash (`ExposureCompensation`) for the nuclear blast, not a white overlay, actual lighting
 - 📺 Typewriter broadcast sequence with punctuation-aware timing synced to a clicking sound
 - 🖤 Full screen fade from white to black with gradient separator lines
 - 🔁 Server-wide respawn on sequence end
@@ -47,17 +47,17 @@ A full cinematic nuclear destruction sequence.
 | [`Notification.txt`](/Scripts/Usable/Notification.txt) | Plug-and-play notification module. Call `module.sg("text", duration)` from any LocalScript |
 
 ### 👁️ Code Showcase
-*Part of larger systems — view the code quality, try the full thing in-game*
+*these are pieces of bigger systems, read the code, or just try it yourself in-game*
 
-| Script | Description |
+| Script | What it does |
 |---|---|
-| [`shake.txt`](/Scripts/Showcase/shake.txt) | Nuclear sequence — PlaybackLoudness camera shake, physics lamp, exposure flash, typewriter broadcast |
-| [`proximity.txt`](/Scripts/Showcase/proximity.txt) | Custom ProximityPromptService override — hold bar, highlight, touch and keyboard support, asset preloading |
-| [`admin-games.txt`](/Scripts/Showcase/admin-games.txt) | Full admin system — fly, kick, ban, setrank, permrank, offline ranking, server restart, DataStore persistence |
-| [`main.txt`](/Scripts/Showcase/main.txt) | Full facility control system — state machine, dynamic world construction, emergency lighting, client replication, keypad, keycard scanner |
-| [`p1.txt`](/Scripts/Showcase/p1.txt) | Lever 1 client — fires once, handles indicator light and tween locally |
-| [`p2.txt`](/Scripts/Showcase/p2.txt) | Lever 2 client — server sends timing parameter, client runs full progress bar animation locally |
-| [`p3.txt`](/Scripts/Showcase/p3.txt) | Nuclear sequence client — server fires once, client handles countdown, lights, sound, notification module |
+| [`shake.txt`](/Scripts/Showcase/shake.txt) | the nuclear explosion client. reads `PlaybackLoudness` every heartbeat frame and offsets the camera in real time, so the shake actually follows the audio. also kicks a physics lamp around and fires `ExposureCompensation` for the flash instead of just slapping a white frame on screen |
+| [`proximity.txt`](/Scripts/Showcase/proximity.txt) | full replacement for roblox's default proximity prompt. built the whole UI myself, icon, action text, hold bar that fills on press, highlight on hover, sound on show. detects touch vs keyboard automatically and handles both. assets preload so nothing pops in late |
+| [`admin-games.txt`](/Scripts/Showcase/admin-games.txt) | admin system. commands run through chat with a prefix, targets support `me` / `all` / `others` / partial names. bans and ranks save to DataStore so they survive server restarts. has offline ranking too, you can rank someone who isn't even in the game |
+| [`main.txt`](/Scripts/Showcase/main.txt) | the main server script for the whole destruction sequence. builds the button, keypad, scanner, indicator lights, and screws entirely in code, nothing placed manually. runs a full state machine through part attributes, handles the keycard swipe, switches every light in the facility to red, locks blast doors and elevators, sequences the music, then resets everything and respawns all players when it's done. ~1000 lines |
+| [`p1.txt`](/Scripts/Showcase/p1.txt) | phase 1 client. server fires once, client lights the indicator and flickers the screen display |
+| [`p2.txt`](/Scripts/Showcase/p2.txt) | phase 2 client. server sends the timing value, client runs the whole progress bar animation locally, 0% to 100% at whatever speed the server decides |
+| [`p3.txt`](/Scripts/Showcase/p3.txt) | phase 3 client. one fire from the server and the client handles everything, activation sound, notification, then a live countdown with a tick every second until FFD is ready |
 
 ---
 
