@@ -76,7 +76,7 @@ Scripts delivered via **GitHub loader**, one script to your game loads the scrip
 
 ## 💳 Payment
 
-- Paypal
+- Paypal (preferred)
 - Robux
 - Amazon gift card
 
