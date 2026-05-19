@@ -244,7 +244,7 @@ game.Players.PlayerAdded:Connect(function(player)
                 adminStore:SetAsync("Users", adminData)
             end)
             if not success then remoteEvent:FireClient(player, "nf", "Failed to rank : " .. arg2 .. " : " .. errorMsg) return end
-            remoteEvent:FireClient(player, "nf", "Error")
+            remoteEvent:FireClient(player, "nf", "Success")
 
         elseif arg == prefix .. "removeoffrank" then
             if targetPlayer then return end
