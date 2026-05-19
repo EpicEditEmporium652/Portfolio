@@ -74,7 +74,10 @@ Scripts delivered via **GitHub loader**, one script to your game loads the scrip
 | Small scripts | $5-$10 |
 | Larger systems | Discuss in DMs |
 
-Payment: Amazon gift cards only.
+## 💳 Payment
+
+- Paypal
+- Amazon gift card
 
 ---
 
