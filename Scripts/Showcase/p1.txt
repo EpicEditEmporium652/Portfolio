@@ -33,5 +33,3 @@ game.ReplicatedStorage.p1.OnClientEvent:Connect(function()
         notification(txt, 13)
     end)
 end)
-
-game.StarterGui.ScreenOrientation = Enum.ScreenOrientation.LandscapeLeft
