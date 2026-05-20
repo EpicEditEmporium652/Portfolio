@@ -58,6 +58,8 @@ A full cinematic nuclear destruction sequence.
 | [`p1.txt`](/Scripts/Showcase/p1.txt) | phase 1 client. server fires once, client lights the indicator and flickers the screen display |
 | [`p2.txt`](/Scripts/Showcase/p2.txt) | phase 2 client. server sends the timing value, client runs the whole progress bar animation locally, 0% to 100% at whatever speed the server decides |
 | [`p3.txt`](/Scripts/Showcase/p3.txt) | phase 3 client. one fire from the server and the client handles everything, activation sound, notification, then a live countdown with a tick every second until FFD is ready |
+| [`serverviewer-client.lua`](/Scripts/Showcase/serverviewer-client.lua) | client side of a real-time server state visualizer. toggles a top-down spectator view, clones and hides the local character so you don't visually disappear, streams live CFrame updates from the server every frame and applies them locally. caches resolved part paths so it's not traversing the tree on every update *(code only, no live demo)* |
+| [`serverviewer-server.lua`](/Scripts/Showcase/serverviewer-server.lua) | server side of the visualizer. opens a Heartbeat connection per player on toggle, collects CFrame data for every relevant BasePart in the workspace and fires it to the client each frame. connection is stored and disconnected cleanly when the player toggles off *(code only, no live demo)* |
 
 ---
 
@@ -69,9 +71,9 @@ Scripts delivered via **GitHub loader**, one script to your game loads the scrip
 
 ## 💰 Pricing
 
-| Job Size | Price |
-|---|---|
-| Small scripts | $5-$10 |
+| Job Size | USD | Robux |
+|---|---|---|
+| Small scripts | $5-$10 | 
 | Larger systems | Discuss in DMs |
 
 ## 💳 Payment
