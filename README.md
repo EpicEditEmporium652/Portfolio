@@ -82,7 +82,6 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 
 - Paypal (preferred)
 - Robux
-- Amazon gift card
 
 ---
 
