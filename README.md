@@ -44,20 +44,20 @@ A full cinematic nuclear destruction sequence.
 ### ✅ Ready to Use
 | Script | Description |
 |---|---|
-| [`Notification.txt`](/Scripts/Usable/Notification.txt) | Plug-and-play notification module. Call `module.sg("text", duration)` from any LocalScript |
+| [`Notification.lua`](/Scripts/Usable/Notification.lua) | Plug-and-play notification module. Call `module.sg("text", duration)` from any LocalScript |
 
 ### 👁️ Code Showcase
 *these are pieces of bigger systems, read the code, or just try it yourself in-game*
 
 | Script | What it does |
 |---|---|
-| [`shake.txt`](/Scripts/Showcase/shake.txt) | the nuclear explosion client. reads `PlaybackLoudness` every heartbeat frame and offsets the camera in real time, so the shake actually follows the audio. also kicks a physics lamp around and fires `ExposureCompensation` for the flash instead of just slapping a white frame on screen |
-| [`proximity.txt`](/Scripts/Showcase/proximity.txt) | full replacement for roblox's default proximity prompt. built the whole UI myself, icon, action text, hold bar that fills on press, highlight on hover, sound on show. detects touch vs keyboard automatically and handles both. assets preload so nothing pops in late |
-| [`admin-games.txt`](/Scripts/Showcase/admin-games.txt) | admin system. commands run through chat with a prefix, targets support `me` / `all` / `others` / partial names. bans and ranks save to DataStore so they survive server restarts. has offline ranking too, you can rank someone who isn't even in the game |
-| [`main.txt`](/Scripts/Showcase/main.txt) | the main server script for the whole destruction sequence. builds the button, keypad, scanner, indicator lights, and screws entirely in code, nothing placed manually. runs a full state machine through part attributes, handles the keycard swipe, switches every light in the facility to red, locks blast doors and elevators, sequences the music, then resets everything and respawns all players when it's done. ~1000 lines |
-| [`p1.txt`](/Scripts/Showcase/p1.txt) | phase 1 client. server fires once, client lights the indicator and flickers the screen display |
-| [`p2.txt`](/Scripts/Showcase/p2.txt) | phase 2 client. server sends the timing value, client runs the whole progress bar animation locally, 0% to 100% at whatever speed the server decides |
-| [`p3.txt`](/Scripts/Showcase/p3.txt) | phase 3 client. one fire from the server and the client handles everything, activation sound, notification, then a live countdown with a tick every second until FFD is ready |
+| [`shake.lua`](/Scripts/Showcase/shake.lua) | the nuclear explosion client. reads `PlaybackLoudness` every heartbeat frame and offsets the camera in real time, so the shake actually follows the audio. also kicks a physics lamp around and fires `ExposureCompensation` for the flash instead of just slapping a white frame on screen |
+| [`proximity.lua`](/Scripts/Showcase/proximity.lua) | full replacement for roblox's default proximity prompt. built the whole UI myself, icon, action text, hold bar that fills on press, highlight on hover, sound on show. detects touch vs keyboard automatically and handles both. assets preload so nothing pops in late |
+| [`admin-games.lua`](/Scripts/Showcase/admin-games.lua) | admin system. commands run through chat with a prefix, targets support `me` / `all` / `others` / partial names. bans and ranks save to DataStore so they survive server restarts. has offline ranking too, you can rank someone who isn't even in the game |
+| [`main.lua`](/Scripts/Showcase/main.lua) | the main server script for the whole destruction sequence. builds the button, keypad, scanner, indicator lights, and screws entirely in code, nothing placed manually. runs a full state machine through part attributes, handles the keycard swipe, switches every light in the facility to red, locks blast doors and elevators, sequences the music, then resets everything and respawns all players when it's done. ~1000 lines |
+| [`p1.lua`](/Scripts/Showcase/p1.lua) | phase 1 client. server fires once, client lights the indicator and flickers the screen display |
+| [`p2.lua`](/Scripts/Showcase/p2.lua) | phase 2 client. server sends the timing value, client runs the whole progress bar animation locally, 0% to 100% at whatever speed the server decides |
+| [`p3.lua`](/Scripts/Showcase/p3.lua) | phase 3 client. one fire from the server and the client handles everything, activation sound, notification, then a live countdown with a tick every second until FFD is ready |
 | [`serverviewer-client.lua`](/Scripts/Showcase/serverviewer-client.lua) | client side of a real-time server state visualizer. toggles a top-down spectator view, clones and hides the local character so you don't visually disappear, streams live CFrame updates from the server every frame and applies them locally. caches resolved part paths so it's not traversing the tree on every update *(code only, no live demo)* |
 | [`serverviewer-server.lua`](/Scripts/Showcase/serverviewer-server.lua) | server side of the visualizer. opens a Heartbeat connection per player on toggle, collects CFrame data for every relevant BasePart in the workspace and fires it to the client each frame. connection is stored and disconnected cleanly when the player toggles off *(code only, no live demo)* |
 
@@ -90,9 +90,6 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 
 DM me on Discord to discuss your project.
 
----
-
-*Scripts shown for Showcase purposes only. Do not copy, reuse, or redistribute without permission.*
 ---
 
 *Scripts shown for Showcase purposes only. Do not copy, reuse, or redistribute without permission.*
