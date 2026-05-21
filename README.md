@@ -80,7 +80,7 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 
 ## 💳 Payment
 
-- Paypal (preferred)
+- PayPal (preferred)
 - Robux
 
 ---
