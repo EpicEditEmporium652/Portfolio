@@ -29,16 +29,16 @@ A full cinematic nuclear destruction sequence.
 
 | System | Description |
 |---|---|
-| Cinematic sequences | Camera effects, screen transitions |
+| Cinematic sequences | Camera effects, screen transitions, exposure flash, typewriter broadcasts |
 | Interactive mechanics | Buttons, keypads, keycard scanners, doors, levers |
-| Custom proximity prompts | Full UI override with hold bar, highlight, touch + keyboard support |
+| Custom proximity prompts | Full UI override with hold bar, highlight, touch and keyboard support |
 | GUI systems | Notification modules, status displays, HUDs |
 | Admin systems | Commands, persistent bans, DataStore ranks, offline ranking |
-| DataStore | Save/load player data, persistent bans and ranks |
-| Weapon systems | Projectile physics, bullet drop, ballistic trajectory, hitbox detection |
-| Vehicle and physics systems | Engine simulation, drivetrain, gear ratios, torque transfer, projectile physics, bullet drop |
-| Mathematical systems | Custom physics formulas, bounce mechanics, slip ratio detection |
-| Custom requests | Not sure if I can build it? Ask me, I'll let you know |
+| DataStore | Save/load player data, persistent stats, persistent bans |
+| Realistic physics | Bounce mechanics, slip ratio detection, and more... |
+| Vehicle simulation | Engine simulation, drivetrain, gear ratios, torque transfer, wheel physics, engine sounds |
+| Combat systems | Projectile physics, bullet drop, ballistic trajectory, hitbox detection |
+| Bug fixing | I work inside existing codebases, stress test edge cases, find what breaks before you do |
 
 ---
 
