@@ -1,6 +1,6 @@
 # Roblox Luau Scripter — Portfolio
 
-> Self-taught scripter. I build systems that don't just work, but *feel* right.
+> I'm a self-taught Luau scripter specializing in physics simulation, mathematical systems, and game mechanics.
 
 ---
 
