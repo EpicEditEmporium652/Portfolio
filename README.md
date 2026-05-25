@@ -4,7 +4,10 @@
 
 ---
 
-## 🎬 Featured Work — Facility Destruction Cinematic
+## 🎬 Projects
+
+
+### 🖥️ Facility Destruction Cinematic
 
 A full cinematic nuclear destruction sequence.
 
@@ -12,7 +15,7 @@ A full cinematic nuclear destruction sequence.
 
 **[🎮 Try it live in-game](https://www.roblox.com/games/121525030356323/test-site-for-ABCG-2)**
 
-### What's in it:
+#### What's in it:
 - 🔴 Sequential button system with indicator lights and screen display
 - 🪪 Keycard scanner, detects equipped item, plays swipe animation on correct axis, returns card to player
 - ⌨️ Functional keypad with code validation and indicator feedback
@@ -23,9 +26,24 @@ A full cinematic nuclear destruction sequence.
 - 🖤 Full screen fade from white to black with gradient separator lines
 - 🔁 Server-wide respawn on sequence end
 
+
+
+### 🚗 Inline-4 Engine Simulation with Gear Drivetrain
+
+A physically accurate engine and drivetrain simulation built entirely in Roblox.
+
+**[▶ Watch the video](https://youtu.be/gxNwwPd7i8M?si=yhvH5wQOrhx6ykE5)**
+
+#### What's in it:
+- 🔩 Inline-4 crankshaft with correct 1-3-4-2 firing order
+- 🔊 Combustion sound system synced to firing sequence
+- ⚙️ Gear transmission with automatic ratio calculation from part size
+- 🔄 Bevel gear direction change from engine to axle
+- 🚗 Fully working wheel drivetrain 
+
 ---
 
-## 🛠️ What I Can Build
+### 🛠️ What I Can Build
 
 | System | Description |
 |---|---|
