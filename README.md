@@ -35,9 +35,8 @@ A full cinematic nuclear destruction sequence.
 | GUI systems | Notification modules, status displays, HUDs |
 | Admin systems | Commands, persistent bans, DataStore ranks, offline ranking |
 | DataStore | Save/load player data, persistent bans and ranks |
-| Physics simulation | Drivetrain systems, engine mechanics, gear ratios, torque transfer, realistic vehicle physics |
 | Weapon systems | Projectile physics, bullet drop, ballistic trajectory, hitbox detection |
-| Vehicle systems | Engine simulation, gearbox, wheel physics, engine sounds |
+| Vehicle and physics systems | Engine simulation, drivetrain, gear ratios, torque transfer, projectile physics, bullet drop |
 | Mathematical systems | Custom physics formulas, bounce mechanics, slip ratio detection |
 | Custom requests | Not sure if I can build it? Ask me, I'll let you know |
 
@@ -79,7 +78,7 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 
 | Job Size | USD |
 |---|---|
-| Small scripts | $5-$10 |
+| Small scripts | $15-$25 |
 | Larger systems | Discuss in DMs |
 
 ## 💳 Payment
@@ -95,4 +94,4 @@ DM me on Discord to discuss your project.
 
 ---
 
-*Scripts shown for Showcase purposes only. Do not copy, reuse, or redistribute without permission.*
+*Code shown for portfolio purposes only.*
