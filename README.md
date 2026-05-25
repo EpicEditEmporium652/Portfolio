@@ -77,10 +77,10 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 
 ## 💰 Pricing
 
-| Job Size | USD | Robux |
+| Job Size | USD |
 |---|---|---|
-| Small scripts | $5-$10 | R$500-1000 |
-| Larger systems | Discuss in DMs | Discuss in DMs |
+| Small scripts | $5-$10 |
+| Larger systems | Discuss in DMs |
 
 ## 💳 Payment
 
