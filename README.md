@@ -35,6 +35,10 @@ A full cinematic nuclear destruction sequence.
 | GUI systems | Notification modules, status displays, HUDs |
 | Admin systems | Commands, persistent bans, DataStore ranks, offline ranking |
 | DataStore | Save/load player data, persistent bans and ranks |
+| Physics simulation | Drivetrain systems, engine mechanics, gear ratios, torque transfer, realistic vehicle physics |
+| Weapon systems | Projectile physics, bullet drop, ballistic trajectory, hitbox detection |
+| Vehicle systems | Engine simulation, gearbox, wheel physics, engine sounds |
+| Mathematical systems | Custom physics formulas, bounce mechanics, slip ratio detection |
 | Custom requests | Not sure if I can build it? Ask me, I'll let you know |
 
 ---
