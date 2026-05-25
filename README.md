@@ -32,7 +32,7 @@ A full cinematic nuclear destruction sequence.
 
 A physically accurate engine and drivetrain simulation built entirely in Roblox.
 
-**[▶ Watch the video](https://youtu.be/gxNwwPd7i8M?si=yhvH5wQOrhx6ykE5)**
+**[▶ Watch the video](https://youtu.be/ZObuodU8pMo?si=Bjxd609wfaKOoHQU)**
 
 #### What's in it:
 - 🔩 Inline-4 crankshaft with correct 1-3-4-2 firing order
