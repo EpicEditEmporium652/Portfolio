@@ -78,7 +78,7 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 ## 💰 Pricing
 
 | Job Size | USD |
-|---|---|---|
+|---|---|
 | Small scripts | $5-$10 |
 | Larger systems | Discuss in DMs |
 
