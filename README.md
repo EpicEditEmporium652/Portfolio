@@ -96,19 +96,19 @@ Everything is tested before delivery. I stress test edge cases myself so you don
 
 | Job Size | USD |
 |---|---|
-| Small scripts | $15-$25 |
+| Small scripts | $5-$25 |
 | Larger systems | Discuss in DMs |
 
 ## 💳 Payment
 
-- PayPal (preferred)
-- Amazon gift card
+- PayPal
 
 ---
 
 ## 📬 Contact
 
 DM me on Discord to discuss your project.
+>@epiceditemporium
 
 ---
 
