@@ -8,6 +8,7 @@
 
 
 ### 🖥️ Facility Destruction Cinematic
+>Locked down, will be opened soon
 
 A full cinematic nuclear destruction sequence.
 
