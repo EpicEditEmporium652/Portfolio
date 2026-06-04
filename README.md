@@ -32,6 +32,8 @@ A full cinematic nuclear destruction sequence.
 
 A physically accurate engine and drivetrain simulation built entirely in Roblox.
 
+![image](https://github.com/user-attachments/assets/a26e141b-a83e-4c60-bd12-2911264848db)
+
 **[▶ Watch the video](https://youtu.be/ZObuodU8pMo?si=Bjxd609wfaKOoHQU)**
 
 #### What's in it:
