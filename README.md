@@ -11,7 +11,7 @@
 
 A full cinematic nuclear destruction sequence.
 
-![image](https://github.com/user-attachments/assets/62122a23-64f6-4223-9d9c-ea46e132d387)
+![FFD](https://github.com/user-attachments/assets/62122a23-64f6-4223-9d9c-ea46e132d387)
 
 **[▶ Watch the full video](https://youtu.be/gxNwwPd7i8M?si=yhvH5wQOrhx6ykE5)**
 
