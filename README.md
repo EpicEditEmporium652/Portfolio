@@ -58,7 +58,8 @@ A physically accurate engine and drivetrain simulation built entirely in Roblox.
 | Realistic physics | Bounce mechanics, slip ratio detection, and more... |
 | Vehicle simulation | Engine simulation, drivetrain, gear ratios, torque transfer, wheel physics, engine sounds |
 | Combat systems | Projectile physics, bullet drop, ballistic trajectory, hitbox detection |
-| Bug fixing | I work inside existing codebases, stress test edge cases, find what breaks before you do |
+| Bug fixing | I work inside existing codebases, testing edge cases, find what breaks before you do |
+| Custom requests | Not sure if i can do it? Ask me, I'll let you know |
 
 ---
 
@@ -90,7 +91,7 @@ A physically accurate engine and drivetrain simulation built entirely in Roblox.
 
 Scripts delivered via **GitHub loader**, one script to your game loads the script automatically. Any updates I push apply to your game instantly without republishing.
 
-Everything is tested before delivery. I stress test edge cases myself so you don't run into bugs after launch. Client and server logic is always separated correctly so nothing can be exploited.
+Everything is tested before delivery. I test edge cases myself so you don't run into bugs after launch. Client and server logic is always separated correctly so nothing can be exploited.
 
 ---
 
