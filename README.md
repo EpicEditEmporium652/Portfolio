@@ -37,9 +37,9 @@ A physically accurate engine and drivetrain simulation built entirely in Roblox.
 **[▶ Watch the video](https://youtu.be/ZObuodU8pMo?si=Bjxd609wfaKOoHQU)**
 
 #### What's in it:
-- 🔩 Crankshaft and piston motion built entirely with Roblox physics constraints — not animated or tweened
+- 🔩 Crankshaft and piston motion built entirely with Roblox physics constraints, not animated or tweened
 - 🔊 Combustion audio triggered per cylinder in 1-3-4-2 firing order, timed by script
-- ⚙️ Gear ratios calculated mathematically from part size — tooth mesh collision is unreliable at speed so the math drives it instead
+- ⚙️ Gear ratios calculated mathematically from part size, tooth mesh collision is unreliable at speed so the math drives it instead
 - 🔄 Bevel gear direction change from engine to axle
 - 🚗 Fully working wheel drivetrain
 
