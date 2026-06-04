@@ -13,7 +13,7 @@ A full cinematic nuclear destruction sequence.
 
 **[▶ Watch the full video](https://youtu.be/gxNwwPd7i8M?si=yhvH5wQOrhx6ykE5)**
 
-**[🎮 Try it live in-game](https://www.roblox.com/games/121525030356323/test-site-for-ABCG-2)** (Locked down, will be opened soon)
+**[🎮 Try it live in-game](https://www.roblox.com/games/121525030356323/test-site-for-ABCG-2)**
 
 #### What's in it:
 - 🔴 Sequential button system with indicator lights and screen display
