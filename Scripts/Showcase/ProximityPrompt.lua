@@ -1,5 +1,3 @@
--- Connected Discord-GitHub | discord: EpicEditEmporium | roblox: broyski9
-
 -- services
 local userInput = game:GetService("UserInputService")
 local tween = game:GetService("TweenService")
