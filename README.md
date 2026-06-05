@@ -92,7 +92,8 @@ A physically accurate engine and drivetrain simulation built entirely in Roblox.
 ## 📦 Delivery
 
 Scripts delivered via file.
-Everythingng is tested before delivery. I test edge cases myself so you don't run into bugs after launch. Client and server logic is always separated correctly so nothing can be exploited.
+
+Everything is tested before delivery. I test edge cases myself so you don't run into bugs after launch. Client and server logic is always separated correctly so nothing can be exploited.
 
 ---
 
