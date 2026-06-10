@@ -1,4 +1,8 @@
-# Roblox Luau Scripter — Portfolio
+[![Portfolio Rated 86/100 - Gold](https://rohire.dev/api/portfolio-rater/badge/128?style=modern&v=rohire-modern-v8)](https://rohire.dev/portfolio-rater?id=128)
+**Click to view**
+
+
+# Roblox Luau Scripter
 
 > I'm a self-taught Luau scripter specializing in physics simulation, mathematical systems, and game mechanics.
 
