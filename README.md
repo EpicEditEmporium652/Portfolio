@@ -112,8 +112,13 @@ Everything is tested before delivery. I test edge cases myself so you don't run 
 
 ## 📬 Contact
 
-DM me on Discord to discuss your project.
+DM me to discuss your project.
+
+#### Discord
 >@epiceditemporium
+
+#### Email
+>epiceditemporium@proton.me
 
 ---
 
