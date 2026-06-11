@@ -3,7 +3,7 @@
 
 # Roblox Luau Scripter
 
-> Self-taught Luau scripter. I build fully-coded systems, cinematic sequences, game mechanics, physics simulations, admin tools, DataStore. Everything in code, nothing placed manually. All done on mobile.
+> Self-taught Luau scripter. Built a 1000-line facility destruction system on mobile in 1.5 months. I build fully-coded systems, cinematic sequences, game mechanics, physics simulations, admin tools, DataStore. Everything in code, nothing placed manually.
 
 ---
 
