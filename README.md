@@ -93,8 +93,8 @@ A physically accurate engine and drivetrain simulation built entirely in Roblox.
 | [`Phase1.lua`](/Scripts/Showcase/Phase1.lua) | Phase 1 client. Server fires once, client lights the indicator and flickers the screen display |
 | [`Phase2.lua`](/Scripts/Showcase/Phase2.lua) | Phase 2 client. Server sends the timing value, client runs the whole progress bar animation locally, 0% to 100% at whatever speed the server decides |
 | [`Phase3.lua`](/Scripts/Showcase/Phase3.lua) | Phase 3 client. One fire from the server and the client handles everything, activation sound, notification, then a live countdown with a tick every second until FFD is ready |
-| [`Serverviewer_client.lua`](/Scripts/Showcase/Serverviewer_client.lua) | Client side of a real-time server state visualizer. Toggles a top-down spectator view, clones and hides the local character so you don't visually disappear, streams live CFrame updates from the server every frame and applies them locally. Caches resolved part paths so it's not traversing the tree on every update *(code only, no live demo)* |
-| [`Serverviewer_server.lua`](/Scripts/Showcase/Serverviewer_server.lua) | Server side of the visualizer. Opens a Heartbeat connection per player on toggle, collects CFrame data for every relevant BasePart in the workspace and fires it to the client each frame. Connection is stored and disconnected cleanly when the player toggles off *(code only, no live demo)* |
+| [`Serverviewer_client.lua`](/Scripts/Showcase/Serverviewer_client.lua) | Client side of a real-time server state visualizer. Top-down spectator view, live CFrame updates streamed every frame, part path caching to avoid tree traversal on every update *(code only, no live demo)* |
+| [`Serverviewer_server.lua`](/Scripts/Showcase/Serverviewer_server.lua) | Server side. Heartbeat connection per player, collects and fires CFrame data for every relevant BasePart each frame, disconnects cleanly on toggle off *(code only, no live demo)* |
 
 ---
 
