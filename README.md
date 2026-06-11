@@ -1,4 +1,4 @@
-[![Portfolio Rated 86/100 - Gold](https://rohire.dev/api/portfolio-rater/badge/128?style=modern&v=rohire-modern-v8)](https://rohire.dev/portfolio-rater?id=128)
+[![Portfolio Rated 91/100 - Gold](https://rohire.dev/api/portfolio-rater/badge/134?style=modern&v=rohire-modern-v8)](https://rohire.dev/portfolio-rater?id=134)
 **Click to view the full breakdown**
 
 # Roblox Luau Scripter
